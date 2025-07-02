@@ -13,10 +13,30 @@ namespace SmsForwardWeixin
     public class Program
     {
         public static string MessageData = "";
+        private static DBOperator _dbOperator;
+
+        public static DBOperator DbOperator // 我也不知道这么干安不安全，反正DBOperator那边写的一坨
+        {
+            get
+            {
+                if (_dbOperator == null)
+                {
+                    lock (typeof(Program))
+                    {
+                        if (_dbOperator == null)
+                        {
+                            _dbOperator = new DBOperator();
+                        }
+                    }
+                }
+                return _dbOperator;
+            }
+        }
+
         public static void Main(string[] args)
         {
-            DBOperator dBOperator = new DBOperator();
-            string a = dBOperator.SetAppointmentListByWxid("wxid_222333","20250716","manager");
+            
+            string a = DbOperator.AddApointmentFromWxid("20250716", "wxid_555666", "Weixin");
             CreateHostBuilder(args).Build().Run();
         }
 
