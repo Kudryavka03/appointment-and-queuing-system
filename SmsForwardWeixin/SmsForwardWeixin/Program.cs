@@ -6,6 +6,7 @@ using SmsForwardWeixin.CRUD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SmsForwardWeixin
@@ -14,6 +15,7 @@ namespace SmsForwardWeixin
     {
         public static string MessageData = "";
         private static DBOperator _dbOperator;
+        public static SmsForwardWeixin.CallOrder.CallOrder callOrder = new SmsForwardWeixin.CallOrder.CallOrder();
 
         public static DBOperator DbOperator // 我也不知道这么干安不安全，反正DBOperator那边写的一坨
         {
@@ -35,7 +37,8 @@ namespace SmsForwardWeixin
 
         public static void Main(string[] args)
         {
-            
+            Thread t = new Thread(callOrder.Listener);
+            t.Start();
             string a = DbOperator.AddApointmentFromWxid("20250716", "wxid_555666", "Weixin");
             CreateHostBuilder(args).Build().Run();
         }

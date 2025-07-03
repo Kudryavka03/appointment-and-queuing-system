@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Coding\\CallOrderServer\\OrderServer.csproj": {}
+    "E:\\Coding\\SmsForwardWeixin\\CallOrderServer\\OrderServer.csproj": {}
   },
   "projects": {
-    "E:\\Coding\\CallOrderServer\\OrderServer.csproj": {
+    "E:\\Coding\\SmsForwardWeixin\\CallOrderServer\\OrderServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\CallOrderServer\\OrderServer.csproj",
+        "projectUniqueName": "E:\\Coding\\SmsForwardWeixin\\CallOrderServer\\OrderServer.csproj",
         "projectName": "OrderServer",
-        "projectPath": "E:\\Coding\\CallOrderServer\\OrderServer.csproj",
+        "projectPath": "E:\\Coding\\SmsForwardWeixin\\CallOrderServer\\OrderServer.csproj",
         "packagesPath": "C:\\Users\\Kanata\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\CallOrderServer\\obj\\",
+        "outputPath": "E:\\Coding\\SmsForwardWeixin\\CallOrderServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
