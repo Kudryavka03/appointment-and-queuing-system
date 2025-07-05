@@ -34,12 +34,25 @@ namespace SmsForwardWeixin.CallOrder
                         string url = "http://127.0.0.1:666/GetStatus/GenNewUuid";
                         HttpResponseMessage response = await callOrderHttpClient.GetAsync(url);
                         string responseBody = await response.Content.ReadAsStringAsync();
-                        Program.DbOperator.AddOrder(token, responseBody);
+                        try
+                        {
+                            int num;
+                            var isVaildNumber = int.TryParse(responseBody, out num);
+                            if (isVaildNumber)
+                            {
+                                Program.DbOperator.AddOrder(token, responseBody);
+                            }
+                            else Console.WriteLine($"[{DateTime.Now}] 叫号系统返回了错误的结果，预约系统无法解析此结果：{responseBody}");
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
                     }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"[{DateTime.Now}] 与叫号服务器通讯失败:{e.Message}。请检查叫号服务器配置是否正确。");
+                    Console.WriteLine($"[{DateTime.Now}] 与叫号系统通讯失败:{e.Message}。请检查叫号服务器配置是否正确。");
                 }
                 Thread.Sleep(50);
             }

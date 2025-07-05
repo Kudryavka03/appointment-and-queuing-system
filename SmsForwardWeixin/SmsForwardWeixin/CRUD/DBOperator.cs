@@ -41,7 +41,7 @@ namespace SmsForwardWeixin.CRUD
             }
             catch (Exception e)
             {
-
+                Program.AddErrMessage($"执行SQL语句失败：{e.Message}");
                 return null;
             }
         }
@@ -165,6 +165,7 @@ namespace SmsForwardWeixin.CRUD
                 return $"预约{time}当日成功！请于当日前往xxxxx地点出示现场预约码进行业务办理。" +"请点击以下链接访问您的现场预约码："+ $"{Program.resUrl+"/"+ imgPath}" + 
                     $" 如需更换日期或取消预约，请先发送\"取消预约\"";
             }
+            Program.AddErrMessage($"用户{wxid}通过{p}平台预约{day}号码 因系统问题失败。");
             return "预约失败：系统繁忙，请稍后再尝试。";
         }
 
@@ -199,43 +200,78 @@ namespace SmsForwardWeixin.CRUD
             return "取消预约失败：系统繁忙，请稍后再尝试。";
         }
 
-        public string AppointmentLiveExec(string wxid) // 申请人现场报道
+        public string AppointmentLiveExec(string token) // 申请人现场报道
         {
             int nowtime = Convert.ToInt32(DateTime.Now.ToString("HHmmss"));
 
-            string sqlOperator = $"Select Count(*) From appointment Where wxid = \'{wxid}\'"; // 先检查是否存在预约
+            string sqlOperator = $"Select Count(*) From appointment Where token = \'{token}\'"; // 先检查是否存在预约
             var dr = RunSqliteCommand(sqlOperator);
             if (dr.Rows[0]["Count(*)"].ToString() == "0")
             {
                 return "现场报到失败：您还没进行预约，请先预约，如需查看操作指引，请回复\"帮助\"";
             }
-            dr = RunSqliteCommand($"Select * From appointment Where wxid = \'{wxid}\'");
+            dr = RunSqliteCommand($"Select * From appointment Where token = \'{token}\'");
             var app_days = Convert.ToInt32(dr.Rows[0]["time"].ToString());
-            var token = dr.Rows[0]["token"].ToString();
+            var wxid = dr.Rows[0]["wxid"].ToString();
             if (nowtime == app_days)    // 当日预约，符合预约条件
             {
                 // 与叫号系统联动，实现叫号。
                 // DBOperator中如果出现访问延迟，对于其他用户而言体验是非常不好的。因此不能将HTTP相关内容放到这里执行。我们可以新建一个线程专门实现叫号。
                 // 我们可以使用一个简单的队列系统，将额外延迟的东西置于队列中执行。
                 Program.callOrder.AddTokenOrder(token);
+                // 删除预约列表，并且新增history列表
             }
             else
             {
                 return $"现场报道失败：您预约的日期{app_days}并非今天{nowtime}，请于{app_days}当天过来预约";
             }
             // 这里就不作现场报道时间限制了，超时了也肯定报道不了了。
+            Program.AddErrMessage("报到失败：系统繁忙，请稍后再试");
             return "报到失败：系统繁忙，请稍后再试";
         }
 
-        public string AddOrder(string token, string order) 
+        public string AddOrder(string token, string order) // Set Token Number
         {
             string sqlOperator = $"INSERT INTO token_order (token,order) VALUES (\'{token}\',\'{order}\')"; // 添加预约
             var status = RunSqliteCommand(sqlOperator);
             if (status == null)
             {
-                return $"预约系统：系统繁忙，为Token:[{token}]添加叫号记录 [号码：{order}] 失败！用户无法自助查看叫号记录";
+                return $"预约系统：系统繁忙，为Token:[{token}]添加叫号记录 [号码：{order}] 失败！用户可能无法自助查看叫号记录";
             }
             return $"预约系统：添加叫号记录 [号码：{order}] 成功！";
         }
-    }
+        public bool AddHistory(string wxid,string token,string desc)    // 追加历史记录或者是为用户添加时间轴
+        {
+            desc = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+$" {desc}";
+            string sqlOperator = $"Select Count(*) From history Where wxid = \'{wxid}\'";
+            var dr = RunSqliteCommand(sqlOperator);
+            // bool isNew = false;
+            if (dr.Rows[0]["Count(*)"].ToString() == "0")  // 检查是否为新加
+            {
+                sqlOperator = $"INSERT INTO history (wxid,token,status) VALUES (\'{wxid}\',\'{token}\',\'{desc}\')";
+                if (RunSqliteCommand (sqlOperator)!=null) return true;
+                Program.AddErrMessage($"用户{wxid} (Token:{token}) 现场报到记录添加失败。");
+                return false;
+            }
+            else
+            {
+                sqlOperator = $"Select * From history Where token = \'{token}\')";  // 查询status字符串
+                var status = RunSqliteCommand (sqlOperator).Rows[0]["status"]+"|"+desc; // 设置status字符串（追加）
+                sqlOperator = "Update history Set status = '{status}' Where wxid = \'{wxid}\'";
+                if (RunSqliteCommand(sqlOperator) != null) return true;
+                Program.AddErrMessage("用户{wxid} (Token:{token}) Action时间轴添加失败。");
+                return false;
+            }
+        }
+        public string token2wxid(string token)
+        {
+            var wxid = RunSqliteCommand($"Select * from appointment Where token = \'{token}\'").Rows[0]["wxid"].ToString();
+            if (wxid == null)
+            {
+                Program.AddErrMessage("转换Token为Wxid时失败，已返回空。");
+                return "N/A";
+            }
+            return wxid;
+        }
+    } 
 }
