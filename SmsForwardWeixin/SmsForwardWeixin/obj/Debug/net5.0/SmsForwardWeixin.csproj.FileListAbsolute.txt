@@ -70,3 +70,11 @@ E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\ru
 E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\runtimes\win-x64\native\e_sqlite3.dll
 E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
 E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\obj\Debug\net5.0\SmsForwardWeixin.sourcelink.json
+E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\System.Drawing.Common.dll
+E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\zxing.dll
+E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\SkiaSharp.dll
+E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\ZXing.SkiaSharp.dll
+E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\runtimes\osx\native\libSkiaSharp.dylib
+E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\runtimes\win-arm64\native\libSkiaSharp.dll
+E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\runtimes\win-x64\native\libSkiaSharp.dll
+E:\Coding\SmsForwardWeixin\SmsForwardWeixin\SmsForwardWeixin\bin\Debug\net5.0\runtimes\win-x86\native\libSkiaSharp.dll

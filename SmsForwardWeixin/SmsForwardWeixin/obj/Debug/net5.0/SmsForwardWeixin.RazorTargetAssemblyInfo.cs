@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmsForwardWeixin")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5ee7c376f20a823f3be22780f7e34e8024252c0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dba2ff6aae01e8d359c2535cbd8a6ef90e428bfe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmsForwardWeixin.Views")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 

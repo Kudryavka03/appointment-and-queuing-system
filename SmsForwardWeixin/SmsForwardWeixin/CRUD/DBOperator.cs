@@ -114,7 +114,6 @@ namespace SmsForwardWeixin.CRUD
             while (dr.Read())
             {
                 result =  dr.GetString(2);
-               
             }
             return result;
         }
@@ -152,16 +151,19 @@ namespace SmsForwardWeixin.CRUD
             if (CheckAppointmentReady(day, wxid, p) is var checkResult && checkResult != "OK") return checkResult; // 检测是否符合要求
             var Token = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds().ToString();
             Token = Convert.ToBase64String(System.Text.Encoding.Default.GetBytes(Token));
-            string sqlOperator = $"INSERT INTO appointment (wxid,token,time,app_time,status) VALUES (\'{wxid}\',\'{Token}\',\'{day}\',\'{Token}\',\"PENDING\")";
+            string imgPath = Utils.Utils.GenQrCode(Token);
+            string sqlOperator = $"INSERT INTO appointment (wxid,token,time,app_time,status) VALUES (\'{wxid}\',\'{Token}\',\'{day}\',\'{Token}\',\'CodeImg Path:{imgPath}\nPENDING\')";
             RunSqliteCommand(sqlOperator);
             sqlOperator = $"Select * From appointment Where wxid = \'{wxid}\'";
             DataTable dr = RunSqliteCommand(sqlOperator);
             string time = dr.Rows[0]["time"].ToString();
             string key = dr.Rows[0]["token"].ToString();
+            
             if (time !="" || time != null)  // 检测是否已经添加成功
             {
-                return $"预约{time}当日成功！您的预约码为{key}。请于当日前往xxxxx地点进行业务办理。" +
-                    $"如需更换日期或取消预约，请先发送\"取消预约\"";
+                if (p == "manager") return $"{Program.imgPath}";
+                return $"预约{time}当日成功！请于当日前往xxxxx地点出示现场预约码进行业务办理。" +"请点击以下链接访问您的现场预约码："+ $"{Program.resUrl+"/"+ imgPath}" + 
+                    $" 如需更换日期或取消预约，请先发送\"取消预约\"";
             }
             return "预约失败：系统繁忙，请稍后再尝试。";
         }
