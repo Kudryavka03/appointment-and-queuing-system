@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Threading;
 
 namespace OrderServer;
@@ -132,7 +133,7 @@ public class DataClass
 			if (isAvailableWindow.Count != 0)
 			{
 				Console.WriteLine(msg);
-				int k = genRamdomNum(0, isAvailableWindow.Count);
+				int k = getCryptoRandom(0, isAvailableWindow.Count);	// 密码级随机数
 				Console.WriteLine("[" + DateTime.Now.ToString() + "] 随机种子：" + (k + 1) + "   范围：1 - " + isAvailableWindow.Count);
 				workQueueStatus[isAvailableWindow[k]] = EnumStatus.STANDBY;
 				SetNextID(isAvailableWindow[k], index);
@@ -150,6 +151,28 @@ public class DataClass
 			return random.Next(s, e);
 		}
 	}
+	public static int getCryptoRandom(int minInclusive, int maxExclusive)	// 确保真随机
+	{
+		if (minInclusive >= maxExclusive)
+			return 0;
+
+        // 计算范围大小
+        int range = maxExclusive - minInclusive;
+        byte[] randomNumber = new byte[1];
+        int maxRejection = 256 - (256 % range); // 拒绝阈值
+
+        using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+        {
+            while (true)
+            {
+                rng.GetBytes(randomNumber);
+                if (randomNumber[0] < maxRejection)
+                {
+                    return minInclusive + (randomNumber[0] % range);
+                }
+            }
+        }
+    }
 
 	public static async void Listener()
 	{

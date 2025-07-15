@@ -42,7 +42,7 @@ namespace SmsForwardWeixin.CallOrder
                             {
                                 Program.DbOperator.AddOrder(token, responseBody);
                             }
-                            else Console.WriteLine($"[{DateTime.Now}] 叫号系统返回了错误的结果，预约系统无法解析此结果：{responseBody}");
+                            else Program.AddErrMessage($"[{DateTime.Now}] 叫号系统返回了错误的结果，预约系统无法解析此结果：{responseBody}");
                         }
                         catch (Exception ex)
                         {
@@ -52,7 +52,7 @@ namespace SmsForwardWeixin.CallOrder
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"[{DateTime.Now}] 与叫号系统通讯失败:{e.Message}。请检查叫号服务器配置是否正确。");
+                    Program.AddErrMessage($"[{DateTime.Now}] 与叫号系统通讯失败:{e.Message}。请检查叫号服务器配置是否正确。");
                 }
                 Thread.Sleep(50);
             }

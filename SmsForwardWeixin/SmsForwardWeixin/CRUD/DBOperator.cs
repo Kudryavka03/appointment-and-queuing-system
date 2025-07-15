@@ -102,24 +102,8 @@ namespace SmsForwardWeixin.CRUD
             return "OK";
         }
 
-
-        public string GetInfoByWxid(string wxid)
-        {
-            var cnn = ConnectDb();
-            // string wxid = "wxid_222333";
-            string sqlOperator = $"Select * From appointment Where wxid = \'{wxid}\'";
-            SqliteCommand cmd = new SqliteCommand(sqlOperator, cnn);
-            SqliteDataReader dr = cmd.ExecuteReader();
-            string result = "null";
-            while (dr.Read())
-            {
-                result =  dr.GetString(2);
-            }
-            return result;
-        }
         public List<string[]> GetAppointmentListByDay(string day)
         {
-            var cnn = ConnectDb();
             string sqlOperator = $"Select * From appointment Where time = \'{day}\'";
             if (day == "all") sqlOperator = $"Select * From appointment";
             DataTable dr =RunSqliteCommand(sqlOperator);
