@@ -24,6 +24,7 @@ public class DataClass
     public static List<OrderReportObject> OrderReportObject = new List<OrderReportObject>();
 
 	public static List<KasumiHighLevelList> kasumiHighLevelLists = new List<KasumiHighLevelList>();
+    public static object lockKasumiHighLevelLists = new object();
 
     public static object lockOrderReportObject = new object();
 
@@ -32,7 +33,7 @@ public class DataClass
 
     public static object lockWorkQueue = new object();
 
-	public static List<YukinaBoardObject> YukinaBoard = new List<YukinaBoardObject>();	// 采用追加形式 主要服务于转窗
+	public static List<YukinaBoardObject> YukinaBoard = new List<YukinaBoardObject>();	// 采用追加形式 主要服务于转窗 转个几把，不用了
 
 	public static object lockYukinaBoard = new object();
 
@@ -52,6 +53,14 @@ public class DataClass
 	{
 	}
 
+	public static void ChangeType(int a, string type)
+	{
+		lock (lockWorkQueuesType)
+		{
+			workQueuesType[a - 1] = ParserType(type);
+			Program.Log($"窗口{a} 业务类型变更: {ParserTypeToString(type)}");
+        }
+	}
 	public static void initData(int size)
 	{
 		Program.Log("开始初始化窗口数据...");
@@ -103,15 +112,25 @@ public class DataClass
         }
 		return true;
 	}
+    public static OrderReportObject ReadReport(int i) // 读取报表 By id
+    {
+        lock (lockOrderReportObject)
+        {
+            foreach(var o in OrderReportObject)
+			{
+				if (o.num == i) return o;
+			}
+        }
+        return null;
+    }
 
-	public static void SetNextID(int index, int uuid)
+    public static void SetNextID(int index, int uuid)
 	{
 		lock (lockWorkQueue)
 		{
 			workQueues[index].SetNextID(uuid);
 			Program.history.Add(uuid, index + 1);
 			Program.currentId = uuid.ToString();
-
         }
 	}
 
@@ -163,6 +182,13 @@ public class DataClass
 		}
 	}
 
+	public static void AddKasumiHighLevelOrder(KasumiHighLevelList kasumiHighLevelList)
+	{
+		lock (lockKasumiHighLevelLists)
+		{
+            kasumiHighLevelLists.Add(kasumiHighLevelList);
+        }
+	}
 	public static bool Allocator(OrderNumber index)	// 分配器
 	{
 		
@@ -179,7 +205,7 @@ public class DataClass
 				if (GetWorkStatusD(j) == EnumStatus.STANDBY && CheckTypeWindowReady(j,index.eType))	// 窗口空闲情况
 				{
 					isAvailableWindow.Add(j);
-					msg = msg + j + " ";
+					msg = msg + (j+1) + " ";
 				}
 			}
 			if (isAvailableWindow.Count != 0)
@@ -210,10 +236,13 @@ public class DataClass
             if (GetWorkStatusD(win) == EnumStatus.STANDBY)	// 实际窗口是需要-1
 			{
                 SetNextID(win, num);
-                Program.Log($"高优先级分配：号码{i+ highLevelFrontInt} 分配至固定窗口{win+1}");
+                Program.Log($"高优先级分配：号码{num} 分配至固定窗口{win+1}");
 				string time = DateTime.Now.ToString("yyyyMMddHHmmss");
                 WriteReport(new OrderReportObject(Convert.ToInt64(time), win+1, enumTypes, num));
-                kasumiHighLevelLists.RemoveAt(i);	// 移除，性能优化
+				lock (lockKasumiHighLevelLists)
+				{
+					kasumiHighLevelLists.RemoveAt(i);   // 移除，性能优化
+				}
                 return true;
             }
         }
@@ -272,7 +301,6 @@ public class DataClass
 	{
 		Program.Log("开始监听取号队列...");
 		int i = 0;  // i 为当前低优先级叫号人数
-		int hi = 0; // i 为当前高优先级叫号人数
 		while (true)
 		{
 			try
@@ -350,6 +378,19 @@ public class DataClass
 		}
 		return result;
 	}
+	public static string ParserTypeToString(List<EnumType> type)
+	{
+
+        string result = "[";
+        for (int i = 0; i < type.Count(); i++)
+        {
+            result += type[i].ToString();
+            if (i < type.Count()-1) result += ",";
+
+        }
+        result += "]";
+        return result;
+    }
 
     public static string ParserTypeToString(string a)
     {
@@ -359,7 +400,7 @@ public class DataClass
 			var b = (EnumType)i;
 			if (a[i] == '1')
 			{
-				if (i != 0) result += ",";
+				if (i>0 && a[i-1] != '0') result += ",";
 				result += b.ToString();
 			}
 			
@@ -393,6 +434,7 @@ public class OrderReportObject	// 用于导出日一次性报表
 		this.time = time;
 		this.Window = Win;
 		this.eType = enumType;
+		this.num = num;
 	}
 }
 

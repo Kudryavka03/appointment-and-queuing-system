@@ -65,11 +65,37 @@ public class GetStatusController : ControllerBase
         var Timestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds().ToString();
 		Program.uuid2id.Add(Timestamp, DataClass.uuid);
         Program.id2uuid.Add(DataClass.uuid,Timestamp);
-        Program.Log("新取号：" + DataClass.uuid + "号 - 校验码："+ Timestamp);
+        Program.Log("新取号：" + DataClass.uuid + "号 " + $"业务类型：{DataClass.ParserTypeToString(typeString)}" + " - 校验码：" + Timestamp);
         return (DataClass.uuid).ToString();
 	}
+    [Route("GetStatus/GetAllWindows")]
+	public async Task<string> GetAllWindows()
+	{
+		var result = "";
+		int maxWindow = DataClass.workQueues.Count;
+		for (int i = 1; i <= maxWindow; i++)
+		{
+			result += i;
+			if (i >=1 && i< maxWindow) result += ",";
+		}
+		return result;
+    }
+    [Route("GetStatus/GetAllType")]
+	public async Task<string> GetAllTypes()
+	{
+		var a = Enum.GetNames(typeof(EnumType));
+		string b = "";
+		for (int i = 0; i < a.Length-1; i++)
+		{
+			b=b + a[i];
+			if (i >= 0 && i < a.Length-2) b += ",";
+		}
+		return b;
+	}
+
+
     [Route("GetStatus/GenNewHighLevelUuid/{typeString}")]
-    public async Task<string> GenNewHighLevelUuid(string typeString)	// 格式是（操作人，目标固定窗口，号码）
+    public async Task<string> GenNewHighLevelUuid(string typeString)	// 格式是（操作人，目标固定窗口，说明）
     {
 		try
 		{
@@ -81,8 +107,8 @@ public class GetStatusController : ControllerBase
 			t = Convert.ToInt32(l[1]);
 			string d = l[2];
 			n = ++DataClass.highLevelInt;
-			DataClass.kasumiHighLevelLists.Add(new KasumiHighLevelList(o, t, d, (n + DataClass.highLevelFrontInt)));
-			Program.Log("新高优先级取号：" + DataClass.highLevelInt + "号 - 固定窗口分配：" + t + " 操作人：" + o + " 说明：" + d);
+			DataClass.AddKasumiHighLevelOrder(new KasumiHighLevelList(o, t, d, (n + DataClass.highLevelFrontInt)));
+			Program.Log("新高优先级取号：" + (DataClass.highLevelInt + DataClass.highLevelFrontInt) + "号 - 固定窗口分配：" + t + " 操作人：" + o + " 说明：" + d);
 			return (n+DataClass.highLevelFrontInt).ToString();
 		}
 		catch(Exception e)
@@ -91,6 +117,29 @@ public class GetStatusController : ControllerBase
 			return "0";
 		}
     }
+
+    [Route("GetStatus/GenNewHighLevelPassUuid/{typeString}")]
+    public async Task<string> GenNewHighLevelPassUuid(string typeString)	// 格式是（操作人，目标固定窗口，号码）
+    {
+        try
+        {
+			var d = DataClass.ReadReport(Convert.ToInt32(typeString));
+            int o = 0;
+            int t = d.Window;
+            int n = 0;
+            n = ++DataClass.highLevelInt;
+            DataClass.AddKasumiHighLevelOrder(new KasumiHighLevelList(o, t, "过号", (n + DataClass.highLevelFrontInt)));
+            Program.Log("新高优先级取号[过号]：" + (DataClass.highLevelInt+DataClass.highLevelFrontInt) + "号 - 固定窗口分配：" + t + " 操作人：" + o + " 说明：" + "过号");
+            return (n + DataClass.highLevelFrontInt).ToString();
+        }
+        catch (Exception e)
+        {
+            Program.Log("高优先级取号出现错误：" + e.Message);
+            return "0";
+        }
+    }
+
+
 
     [Route("GetStatus/GenNewUuid/")]
     public async Task<string> OldGenNewUuid()
@@ -161,6 +210,34 @@ public class GetStatusController : ControllerBase
     public async Task<string> GetNoticBoard(string id)
     {
 		return "null";
+    }
+
+    [Route("GetStatus/GetLog")]
+    public async Task<string> GetLog(string id)
+    {
+		var logs = Program.logs;
+		var result = "";
+	 foreach (var log in logs)
+		{
+			result += log;
+			result += "\r\n";
+		}
+	 return result;
+    }
+    [Route("SetStatus/SetTypes/{Window}/{Type}")]
+	public async Task<string> SetTypes(string Window,string Type)
+	{
+		if (Type == "") return "您至少需要为窗口设置一个业务。";
+		DataClass.ChangeType(Convert.ToInt32(Window), Type);
+		return "Kasumi：Yeah!!!!!";
+	}
+
+    [Route("GetWindowType/{id}")]
+	public async Task<string> GetWindowType(string id)
+	{
+		var i = Convert.ToInt32(id);
+		var r = DataClass.workQueuesType[i - 1];
+		return DataClass.ParserTypeToString(r);
     }
 
 }
