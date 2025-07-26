@@ -1,55 +1,55 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Runtime.CompilerServices;
+using System.Reflection.Metadata;
 
 namespace OrderServer;
 
 public class Program
 {
+    // 信宜市生源地助学贷款叫号系统 服务后端
 	public static string uuid = "-1";
 	public static string currentId = "0";
     public static Hashtable history = new Hashtable();
     public static Hashtable uuid2id = new Hashtable();
     public static Hashtable id2uuid = new Hashtable();
+    private static object _logMessageLock = new object ();
+    public static List<string> logs = new List<string>();
+    public static string  StartTimestamp;
+
 
     public static void Main(string[] args)
 	{
-		DataClass.initData(5);
+        StartTimestamp = DateTime.Now.ToString("yyyyMMddHHmmssffffff");
+        Log($"系统启动：{StartTimestamp}");
+        DataClass.initData(5);
 		Thread t = new Thread(DataClass.Listener);
 		t.Start();
 		CreateHostBuilder(args).Build().Run();
 	}
 
-	public static async void OnNumChanged(object sender, FileSystemEventArgs e)
-	{
-		if (!(e.Name == "QueueResult-CurrentNum"))
-		{
-			return;
-		}
-		bool result = false;
-		while (!result)
-		{
-			try
-			{
-				uuid = File.ReadAllText(e.FullPath);
-				Console.WriteLine(uuid);
-				result = true;
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex);
-				result = false;
-			}
-		}
-	}
+    public static void Log(string log,[CallerMemberName] string callerName = "",
+    [CallerFilePath] string sourceFilePath = "",
+    [CallerLineNumber] int lineNumber = 0)  // 日志记录系统
+    {
+        lock (_logMessageLock)
+        {
+            var msg = $"[{DateTime.Now}] [{callerName}] {log}";
+            logs.Add(msg);
+            Console.WriteLine(msg);
+        }
+    }
 
 	public static IHostBuilder CreateHostBuilder(string[] args)
 	{
-        Console.WriteLine("Service Start: CreateHostBuilder");
+        
         return Host.CreateDefaultBuilder(args)
         .ConfigureLogging((hostContext, logging) =>
         {
@@ -72,11 +72,12 @@ public class Program
             logging.AddFilter("Microsoft.AspNetCore.Mvc", LogLevel.Error);
         }).ConfigureWebHostDefaults(delegate(IWebHostBuilder webBuilder)
 		{
-			
-
-            webBuilder.UseUrls("http://0.0.0.0:888/");
+            string urls = "http://0.0.0.0:888/";
+            webBuilder.UseUrls(urls);
+            Program.Log($"UseUrls: {urls}");
 			webBuilder.UseStartup<Startup>();
-		});
+            Program.Log("叫号后端启动成功。");
+        });
 		
 	}
 }

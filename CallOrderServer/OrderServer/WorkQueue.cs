@@ -1,12 +1,15 @@
+using System.Linq;
+
 namespace OrderServer;
 
-public class WorkQueue
+public class WorkQueue	// WorkQueue就是对应窗口，其中有些
 {
 	private int currentNum = -1;
 
 	private int nextNum = -1;
 
 	private EnumStatus status;
+	private EnumType[] type;	// 业务类型
 
 	private int index;
 
@@ -15,6 +18,7 @@ public class WorkQueue
 	public WorkQueue(int index)
 	{
 		this.index = index;
+		// this.type = eType;
 	}
 
 	public EnumStatus GetWorkStatusD()
@@ -22,6 +26,10 @@ public class WorkQueue
 		return status;
 	}
 
+	public bool GetReadyEnumType(EnumType eTypeTest)
+	{
+		return type.Contains(eTypeTest);
+	}
 	public int GetCurrentNum()
 	{
 		return currentNum;
@@ -65,6 +73,7 @@ public class WorkQueue
 
 	public void SetNextID(int i)
 	{
+		Program.Log("SetNextID Action Called");
 		nextNum = i;
 		CallNextID();
 	}

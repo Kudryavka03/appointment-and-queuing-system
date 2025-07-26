@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +42,7 @@ public class GetStatusController : ControllerBase
 		{
 			return "修正失败，请检查是否输入了正确的数字。";
 		}
-		Console.WriteLine("[" + DateTime.Now.ToString() + "] 修正叫号 " + oldNum + " > " + DataClass.uuid);
+		Program.Log("修正叫号 " + oldNum + " > " + DataClass.uuid);
 		return "修正成功";
 	}
 
@@ -55,17 +56,57 @@ public class GetStatusController : ControllerBase
 		return "200 OK!";
 	}
 
-	[Route("GetStatus/GenNewUuid")]
-	public async Task<string> Index2()
+	[Route("GetStatus/GenNewUuid/{typeString}")]
+	public async Task<string> GenNewUuid(string typeString)
 	{
-		DataClass.tempNums.Add(++DataClass.uuid);
+		List<EnumType> e = DataClass.ParserType(typeString);
+		DataClass.tempNums.Add(new OrderNumber(++DataClass.uuid,e, typeString));
 
         var Timestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds().ToString();
 		Program.uuid2id.Add(Timestamp, DataClass.uuid);
         Program.id2uuid.Add(DataClass.uuid,Timestamp);
-        Console.WriteLine("[" + DateTime.Now.ToString() + "] 新取号：" + DataClass.uuid + "号 - 校验码："+ Timestamp);
+        Program.Log("新取号：" + DataClass.uuid + "号 - 校验码："+ Timestamp);
         return (DataClass.uuid).ToString();
 	}
+    [Route("GetStatus/GenNewHighLevelUuid/{typeString}")]
+    public async Task<string> GenNewHighLevelUuid(string typeString)	// 格式是（操作人，目标固定窗口，号码）
+    {
+		try
+		{
+			int o = 0;
+			int t = 0;
+			int n = 0;
+			var l = typeString.Split(',');
+			o = Convert.ToInt32(l[0]);
+			t = Convert.ToInt32(l[1]);
+			string d = l[2];
+			n = ++DataClass.highLevelInt;
+			DataClass.kasumiHighLevelLists.Add(new KasumiHighLevelList(o, t, d, (n + DataClass.highLevelFrontInt)));
+			Program.Log("新高优先级取号：" + DataClass.highLevelInt + "号 - 固定窗口分配：" + t + " 操作人：" + o + " 说明：" + d);
+			return (n+DataClass.highLevelFrontInt).ToString();
+		}
+		catch(Exception e)
+		{
+			Program.Log("高优先级取号出现错误：" + e.Message);
+			return "0";
+		}
+    }
+
+    [Route("GetStatus/GenNewUuid/")]
+    public async Task<string> OldGenNewUuid()
+    {
+		string typeString = "10";
+        List<EnumType> e = DataClass.ParserType(typeString);
+        DataClass.tempNums.Add(new OrderNumber(++DataClass.uuid, e, typeString));
+
+        var Timestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds().ToString();
+        Program.uuid2id.Add(Timestamp, DataClass.uuid);
+        Program.id2uuid.Add(DataClass.uuid, Timestamp);
+		Program.Log("注意：当前正在使用旧版取号台接口进行取号，目前该接口已废弃，请尽快使用新接口进行取号。");
+        Program.Log("新取号：" + DataClass.uuid + "号 " + $"业务类型：{DataClass.ParserTypeToString(typeString)}" + " - 校验码：" + Timestamp );
+        return (DataClass.uuid).ToString();
+    }
+
 
     [Route("GetStatus/GetVerifyCode/{id}")]
     public async Task<string> Index2(string id)
@@ -115,4 +156,11 @@ public class GetStatusController : ControllerBase
 		}
 		return "200";
 	}
+
+    [Route("GetStatus/GetNoticBoard/{id}")]
+    public async Task<string> GetNoticBoard(string id)
+    {
+		return "null";
+    }
+
 }
