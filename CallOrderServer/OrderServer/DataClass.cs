@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.ConstrainedExecution;
 using System.Security;
 using System.Security.Cryptography;
@@ -299,7 +300,20 @@ public class DataClass
 			return true;
 		}
 	}
+	public static  bool AnyAvailableWindow()
+	{
+		List<WorkQueue> tmp = null;
+		lock (lockWorkQueue)
+		{
+			tmp = workQueues;
+        }
+        foreach (var a in tmp)
+        {
+            if (a.GetWorkStatusD() == EnumStatus.STANDBY) return true;
+        }
+        return false;
 
+    }
 
     public static async void Listener()
 	{
@@ -310,21 +324,25 @@ public class DataClass
 		{
 			try
 			{
-				AllocatorHighLevel();	// 先检查高优先级列表是否有分配，如果有则优先分配高优先级
-				int i3 = blockList.Count;
-                for (int i2 = 0; i2 < i3; i2++)
+				if (AnyAvailableWindow())
 				{
-					if (Allocator(tempNums[blockList[i2]]) == 1) {
-                        blockList.RemoveAt(i2);
-                        i3--;
-						i2--;
-					};
-				}
-				if (Allocator(tempNums[i]) == 0)	 // 其中一个业务阻塞都会使得分配阻塞
-				{
-                    blockList.Add(i);
+                    AllocatorHighLevel();   // 先检查高优先级列表是否有分配，如果有则优先分配高优先级
+                    int i3 = blockList.Count;
+                    for (int i2 = 0; i2 < i3; i2++)
+                    {
+                        if (Allocator(tempNums[blockList[i2]]) == 1)
+                        {
+                            blockList.RemoveAt(i2);
+                            i3--;
+                            i2--;
+                        };
+                    }
+                    if (Allocator(tempNums[i]) == 0)     // 其中一个业务阻塞都会使得分配阻塞
+                    {
+                        blockList.Add(i);
+                    }
+                    i++;
                 }
-				i++;
 			}
 			catch (Exception)
 			{
