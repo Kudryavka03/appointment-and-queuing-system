@@ -42,8 +42,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -54,7 +58,8 @@
               "RelativeToolTip": "SettingForm.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T09:07:25.301Z"
+              "WhenOpened": "2025-07-27T09:07:25.301Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -64,7 +69,7 @@
               "RelativeDocumentMoniker": "SettingForm.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\SettingForm.cs",
               "RelativeToolTip": "SettingForm.cs",
-              "ViewState": "AQIAAEYAAAAAAAAAAAAIwGEAAAAmAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAwwB8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-27T08:50:26.764Z",
               "EditorCaption": ""
@@ -116,11 +121,8 @@
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\SettingForm.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "SettingForm.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T04:39:57.62Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "WhenOpened": "2025-07-27T04:39:57.62Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
             },
             {
               "$type": "Document",

@@ -34,8 +34,12 @@ namespace OrderWorkbench
             {
                 JObject jObject = JObject.Parse(File.ReadAllText("conf.json"));
                 OperatorCenterURL = jObject["OperatorCenterURL"].ToString();
+
                 OperatorID = Convert.ToInt32(jObject["OperatorID"]);
+                SetNumText.Text = OperatorID.ToString();
+                SetServerURL.Text = OperatorCenterURL.ToString();
                 typeStr = jObject["TypeName"].ToString();
+
                 switch (typeStr)
                 {
                     case "00":
@@ -73,7 +77,7 @@ namespace OrderWorkbench
                 JObject jObject2 = JObject.Parse(File.ReadAllText("conf.json"));
                 OperatorCenterURL = jObject2["OperatorCenterURL"].ToString();
                 OperatorID = Convert.ToInt32(jObject2["OperatorID"]);
-                
+
             }
         }
 
@@ -111,7 +115,7 @@ namespace OrderWorkbench
             {
                 await httpClient.GetStringAsync(OperatorCenterURL + $"/SetStatus/SetTypes/{OperatorID}/{typeStr}");
                 this.Hide();
-                new Form1(OperatorCenterURL, OperatorID,typeStr).ShowDialog();
+                new Form1(OperatorCenterURL, OperatorID, typeStr).ShowDialog();
                 this.Show();
                 button1.Enabled = true;
 
@@ -121,6 +125,11 @@ namespace OrderWorkbench
                 MessageBox.Show("通讯失败。请在网络良好的环境下再次尝试，或检查后台是否已经启动");
                 button1.Enabled = true;
             }
+
+        }
+
+        private void SetNumText_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

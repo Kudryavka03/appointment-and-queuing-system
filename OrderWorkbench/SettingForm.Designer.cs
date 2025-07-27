@@ -54,6 +54,7 @@
             SetNumText.Size = new System.Drawing.Size(289, 27);
             SetNumText.TabIndex = 1;
             SetNumText.Text = "1";
+            SetNumText.TextChanged += SetNumText_TextChanged;
             // 
             // label2
             // 
