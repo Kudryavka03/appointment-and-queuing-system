@@ -89,6 +89,7 @@
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
+            button9 = new System.Windows.Forms.Button();
             TodayInfoBox.SuspendLayout();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -146,6 +147,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button9);
             groupBox1.Controls.Add(RefreshWindowTypeInfoBtn);
             groupBox1.Controls.Add(SetWindowTypeBtn);
             groupBox1.Controls.Add(TypeLabel);
@@ -301,6 +303,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new System.Drawing.Size(181, 28);
             comboBox1.TabIndex = 1;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -730,6 +733,16 @@
             timer2.Interval = 5000;
             timer2.Tick += timer2_Tick;
             // 
+            // button9
+            // 
+            button9.Location = new System.Drawing.Point(583, 155);
+            button9.Name = "button9";
+            button9.Size = new System.Drawing.Size(127, 44);
+            button9.TabIndex = 15;
+            button9.Text = "窗口信息一览";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -831,5 +844,6 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Label ChangeWindowLabelNum;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button9;
     }
 }

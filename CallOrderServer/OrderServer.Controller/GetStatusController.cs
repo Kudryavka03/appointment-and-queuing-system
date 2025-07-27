@@ -174,9 +174,9 @@ public class GetStatusController : ControllerBase
     }
 
     [Route("GetStatus/GetCurrentUuid")]
-	public async Task<string> Index3()
+	public async Task<string> GetCurrentUuid()
 	{
-		return (DataClass.uuid == -1) ? "请先取号" : DataClass.uuid.ToString();
+		return (DataClass.uuid == 0) ? "请先取号" : DataClass.uuid.ToString();
 	}
     [Route("GetStatus/GetCurrentId/{id}")]
     public async Task<string> getid(string id)
@@ -239,5 +239,11 @@ public class GetStatusController : ControllerBase
 		var r = DataClass.workQueuesType[i - 1];
 		return DataClass.ParserTypeToString(r);
     }
+    [Route("GetStatus/GetCurrentLastestOrder")]
+
+	public async Task<string> GetCurrentLastestOrder()
+	{
+		return DataClass.LastestOrder + ","+((DataClass.uuid == 0) ? "0" : DataClass.uuid.ToString());
+	}
 
 }

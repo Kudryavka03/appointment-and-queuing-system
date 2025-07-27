@@ -199,6 +199,7 @@ namespace OrderClientV2
                 return;
             }
             await httpClient.GetStringAsync(OperatorCenterURL + $"/SetStatus/SetTypes/{comboBox1.Text}/{typeStr}");
+            RefreshWindowTypeInfo();
         }
 
         private async void WindowStopBtn_Click(object sender, EventArgs e)
@@ -305,6 +306,31 @@ namespace OrderClientV2
 
                 string result = await httpClient.GetStringAsync(OperatorCenterURL + "/GetStatus/GenNewHighLevelUuid/" + $"{comboBox3.Text}," + comboBox4.Text + ",转窗");
                 ChangeWindowLabelNum.Text = result;
+            }
+            catch (Exception ex)
+            {
+                toolStripStatusLabel1.Text = "未连接到调度中心 ";
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshWindowTypeInfo();
+        }
+
+        private async void button9_Click(object sender, EventArgs e)
+        {
+            string message = "";
+            try
+            {
+                for (int i = 0; i< comboBox1.Items.Count; i++) {
+                    string typeResult = await httpClient.GetStringAsync(OperatorCenterURL + "/GetWindowType/" + comboBox1.Items[i]);
+                    
+                    string statusResult = await httpClient.GetStringAsync(OperatorCenterURL + "/GetStatus/" + comboBox1.Items[i]);
+
+                    message+=($"{i+1}号窗 当前分配：{statusResult}      业务类型：{typeResult}\r\n");
+                }
+                MessageBox.Show(message);
             }
             catch (Exception ex)
             {
