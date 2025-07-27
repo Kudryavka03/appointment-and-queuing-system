@@ -72,19 +72,42 @@ namespace OrderWorkbench
             }
         }
 
-        private void nextBtn_Click(object sender, EventArgs e)
+        private async void nextBtn_Click(object sender, EventArgs e)
         {
             nextBtn.Enabled = false;
+            base.TopMost = true;
+            try
+            {
+                nextBtn.Enabled = false;
+                await httpClient.GetStringAsync(OperatorCenterURL + "/SetStatus/" + OperatorID + "/COMPLETED");
+            }
+            catch (Exception)
+            {
+                nextBtn.Enabled = true;
+                Text = "工作台 - 未连接到调度中心 " + OperatorID + "号机  通讯失败";
+            }
         }
 
         private async void 暂停ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            await httpClient.GetStringAsync(OperatorCenterURL + "/CallAction/" + OperatorID + "/STOP");
+            try
+            {
+                await httpClient.GetStringAsync(OperatorCenterURL + "/CallAction/" + OperatorID + "/STOP");
+            }
+            catch {
+                Text = "工作台 - 未连接到调度中心 " + OperatorID + "号机  通讯失败";
+            }
         }
 
         private async void 继续ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            await httpClient.GetStringAsync(OperatorCenterURL + "/CallAction/" + OperatorID + "/START");
+            try { 
+                await httpClient.GetStringAsync(OperatorCenterURL + "/CallAction/" + OperatorID + "/START");
+            }
+            catch
+            {
+                Text = "工作台 - 未连接到调度中心 " + OperatorID + "号机  通讯失败";
+            }
         }
 
         private void 转窗ToolStripMenuItem1_Click(object sender, EventArgs e)

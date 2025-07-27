@@ -34,6 +34,7 @@
             LogBox1 = new System.Windows.Forms.TextBox();
             RefreshTodayInfo = new System.Windows.Forms.Button();
             groupBox1 = new System.Windows.Forms.GroupBox();
+            button9 = new System.Windows.Forms.Button();
             RefreshWindowTypeInfoBtn = new System.Windows.Forms.Button();
             SetWindowTypeBtn = new System.Windows.Forms.Button();
             TypeLabel = new System.Windows.Forms.Label();
@@ -89,7 +90,6 @@
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
-            button9 = new System.Windows.Forms.Button();
             TodayInfoBox.SuspendLayout();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -169,6 +169,16 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "窗口设置";
+            // 
+            // button9
+            // 
+            button9.Location = new System.Drawing.Point(583, 155);
+            button9.Name = "button9";
+            button9.Size = new System.Drawing.Size(127, 44);
+            button9.TabIndex = 15;
+            button9.Text = "窗口信息一览";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
             // 
             // RefreshWindowTypeInfoBtn
             // 
@@ -346,9 +356,10 @@
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Location = new System.Drawing.Point(611, 72);
+            checkBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            checkBox2.Location = new System.Drawing.Point(592, 68);
             checkBox2.Name = "checkBox2";
-            checkBox2.Size = new System.Drawing.Size(95, 24);
+            checkBox2.Size = new System.Drawing.Size(118, 32);
             checkBox2.TabIndex = 4;
             checkBox2.Text = "信息变更";
             checkBox2.UseVisualStyleBackColor = true;
@@ -356,9 +367,10 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new System.Drawing.Point(611, 42);
+            checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            checkBox1.Location = new System.Drawing.Point(592, 30);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new System.Drawing.Size(95, 24);
+            checkBox1.Size = new System.Drawing.Size(118, 32);
             checkBox1.TabIndex = 3;
             checkBox1.Text = "签订合同";
             checkBox1.UseVisualStyleBackColor = true;
@@ -732,16 +744,6 @@
             timer2.Enabled = true;
             timer2.Interval = 5000;
             timer2.Tick += timer2_Tick;
-            // 
-            // button9
-            // 
-            button9.Location = new System.Drawing.Point(583, 155);
-            button9.Name = "button9";
-            button9.Size = new System.Drawing.Size(127, 44);
-            button9.TabIndex = 15;
-            button9.Text = "窗口信息一览";
-            button9.UseVisualStyleBackColor = true;
-            button9.Click += button9_Click;
             // 
             // Form1
             // 

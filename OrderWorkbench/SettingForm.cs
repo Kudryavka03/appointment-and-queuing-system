@@ -95,6 +95,7 @@ namespace OrderWorkbench
             if (typeStr == "00")
             {
                 MessageBox.Show("您还未勾选取号类型，请确认需要办理的业务类型。");
+                button1.Enabled = true;
                 return;
             }
             string SettingText = JsonConvert.SerializeObject(new SettingClass

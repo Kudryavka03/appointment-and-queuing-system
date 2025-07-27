@@ -108,6 +108,8 @@ namespace OrderClientV2
                 MessageBox.Show("您还未勾选取号类型，请确认取号者需要办理的业务类型。");
                 return;
             }
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
             await httpClient.GetStringAsync(OperatorCenterURL + "/GetStatus/GenNewUuid/" + typeStr);
 
         }

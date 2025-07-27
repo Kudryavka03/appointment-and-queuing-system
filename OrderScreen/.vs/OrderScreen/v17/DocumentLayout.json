@@ -26,23 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SettingForm.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderScreen\\OrderScreen\\SettingForm.cs",
-              "RelativeDocumentMoniker": "OrderScreen\\SettingForm.cs",
-              "ToolTip": "E:\\Coding\\OrderNumber\\OrderScreen\\OrderScreen\\SettingForm.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "..\\..\\OrderNumber\\OrderScreen\\OrderScreen\\SettingForm.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T10:11:00.222Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
@@ -51,9 +36,10 @@
               "RelativeDocumentMoniker": "OrderScreen\\SettingForm.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderScreen\\OrderScreen\\SettingForm.cs",
               "RelativeToolTip": "OrderScreen\\SettingForm.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABIAAAAWAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAIBMwBIAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T10:09:59.419Z"
+              "WhenOpened": "2024-07-27T10:09:59.419Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -63,10 +49,26 @@
               "RelativeDocumentMoniker": "OrderScreen\\Form1.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderScreen\\OrderScreen\\Form1.cs",
               "RelativeToolTip": "OrderScreen\\Form1.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAADwvyYAAAAJAAAA",
+              "ViewState": "AQIAAKAAAAAAAAAAAAAxwLQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-27T09:54:53.825Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SettingForm.cs [Design]",
+              "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderScreen\\OrderScreen\\SettingForm.cs",
+              "RelativeDocumentMoniker": "OrderScreen\\SettingForm.cs",
+              "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderScreen\\OrderScreen\\SettingForm.cs [Design]",
+              "RelativeToolTip": "OrderScreen\\SettingForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-27T10:11:00.222Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -74,10 +76,11 @@
               "Title": "Form1.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderScreen\\OrderScreen\\Form1.cs",
               "RelativeDocumentMoniker": "OrderScreen\\Form1.cs",
-              "ToolTip": "E:\\Coding\\OrderNumber\\OrderScreen\\OrderScreen\\Form1.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "..\\..\\OrderNumber\\OrderScreen\\OrderScreen\\Form1.cs [\u8BBE\u8BA1]",
+              "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderScreen\\OrderScreen\\Form1.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "OrderScreen\\Form1.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-27T09:52:03.885Z"
+              "WhenOpened": "2024-07-27T09:52:03.885Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
             }
           ]
         }

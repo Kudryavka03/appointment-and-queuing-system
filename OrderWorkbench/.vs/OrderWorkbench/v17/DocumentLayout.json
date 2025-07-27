@@ -3,19 +3,11 @@
   "WorkspaceRootPath": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|e:\\coding\\smsforwardweixin\\orderworkbench\\settingform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:settingform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|e:\\coding\\smsforwardweixin\\orderworkbench\\settingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:settingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\changewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:changewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|e:\\coding\\smsforwardweixin\\orderworkbench\\settingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\settingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:settingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -23,8 +15,16 @@
       "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|e:\\coding\\smsforwardweixin\\orderworkbench\\settingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:settingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|e:\\coding\\smsforwardweixin\\orderworkbench\\settingform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:settingform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\changewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|solutionrelative:changewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{38419364-F4E3-4A08-981A-E6CF00379ECB}|OrderWorkbench.csproj|e:\\coding\\smsforwardweixin\\orderworkbench\\changewindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,11 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "SettingForm.Designer.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\SettingForm.Designer.cs",
               "RelativeDocumentMoniker": "SettingForm.Designer.cs",
@@ -54,18 +54,17 @@
               "RelativeToolTip": "SettingForm.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T09:07:25.301Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-27T09:07:25.301Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "SettingForm.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\SettingForm.cs",
               "RelativeDocumentMoniker": "SettingForm.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\SettingForm.cs",
               "RelativeToolTip": "SettingForm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAMAAAA",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAIwGEAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-27T08:50:26.764Z",
               "EditorCaption": ""
@@ -97,28 +96,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AQIAADwAAAAAAAAAAADwv0QAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T04:01:30.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SettingForm.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\SettingForm.cs",
               "RelativeDocumentMoniker": "SettingForm.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\SettingForm.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "SettingForm.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T04:39:57.62Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAIA2wEoAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T04:01:30.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-27T04:39:57.62Z"
             },
             {
               "$type": "Bookmark",
@@ -126,27 +124,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ChangeWindow.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\ChangeWindow.cs",
               "RelativeDocumentMoniker": "ChangeWindow.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\ChangeWindow.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "ChangeWindow.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T04:46:28.866Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
+              "WhenOpened": "2025-07-27T04:46:28.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\Form1.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "Form1.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T03:58:26.263Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
+              "WhenOpened": "2025-07-27T03:58:26.263Z"
             }
           ]
         }

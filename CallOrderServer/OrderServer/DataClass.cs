@@ -192,10 +192,10 @@ public class DataClass
             kasumiHighLevelLists.Add(kasumiHighLevelList);
         }
 	}
-	public static bool Allocator(OrderNumber index)	// 分配器
+	public static int Allocator(OrderNumber index)	// 分配器
 	{
 		
-		if (giveUpNums.Contains(index.id)) return true; // 放弃排队
+		if (giveUpNums.Contains(index.id)) return 0; // 放弃排队
 		List<EnumType> type = index.eType;					// 新取号的业务类型
 		List<int> isAvailableWindow = new List<int>();	// 得闲的窗口
 		int i = totalWindowNum;
@@ -221,9 +221,9 @@ public class DataClass
 				Program.Log("将" + index.id + "号 业务："+ParserTypeToString(index.typeStr)+ " 分配给" + (isAvailableWindow[k] + 1) + "号窗");
 				LastestOrder = index.id.ToString();
                 WriteReport(new OrderReportObject(Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmmss")), isAvailableWindow[k] + 1,index.eType, index.id));
-				return true;
+				return 1;
 			}
-			return false; 
+			return 0; 
 		}
 	}
 
@@ -305,15 +305,26 @@ public class DataClass
 	{
 		Program.Log("开始监听取号队列...");
 		int i = 0;  // i 为当前低优先级叫号人数
+		List<int> blockList = new List<int>();	// 阻塞的号码，普通优先级中依次优先分配阻塞号码
 		while (true)
 		{
 			try
 			{
 				AllocatorHighLevel();	// 先检查高优先级列表是否有分配，如果有则优先分配高优先级
-				if (Allocator(tempNums[i]))
+				int i3 = blockList.Count;
+                for (int i2 = 0; i2 < i3; i2++)
 				{
-					i++;
+					if (Allocator(tempNums[blockList[i2]]) == 1) {
+                        blockList.RemoveAt(i2);
+                        i3--;
+						i2--;
+					};
 				}
+				if (Allocator(tempNums[i]) == 0)	 // 其中一个业务阻塞都会使得分配阻塞
+				{
+                    blockList.Add(i);
+                }
+				i++;
 			}
 			catch (Exception)
 			{

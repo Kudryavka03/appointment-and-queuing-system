@@ -175,8 +175,10 @@ namespace OrderScreen
 
         private void button1_Click(object sender, EventArgs e)
         {
+            timer1.Enabled=false;
             SettingForm settingForm = new SettingForm();
             settingForm.ShowDialog();
+            timer1.Enabled = true;
         }
 
         private void OrderClientOperatorForm_FormClosed(object sender, FormClosedEventArgs e)

@@ -43,7 +43,11 @@ public class WorkQueue	// WorkQueue就是对应窗口，其中有些
 
 	public void CallStart()
 	{
-		SetWorkStatus(EnumStatus.STANDBY);
+		var a = GetWorkStatusD();
+		if (a == EnumStatus.STANDBY) return;    // 防止多次Call Next ID
+        if (a == EnumStatus.BUSY) return;
+
+        SetWorkStatus(EnumStatus.STANDBY);
 		CallNextID();
 	}
 
@@ -73,7 +77,6 @@ public class WorkQueue	// WorkQueue就是对应窗口，其中有些
 
 	public void SetNextID(int i)
 	{
-		Program.Log("SetNextID Action Called");
 		nextNum = i;
 		CallNextID();
 	}
