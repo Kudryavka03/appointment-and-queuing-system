@@ -38,6 +38,7 @@ namespace OrderScreen
         {
             SetServerURL.Text = OrderClientOperatorForm.OperatorCenterURL;
             SetNumText.Text = OrderClientOperatorForm.OperatorID.ToString();
+            this.TopMost = true;
         }
     }
 }

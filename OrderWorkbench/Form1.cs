@@ -124,7 +124,7 @@ namespace OrderWorkbench
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             nextBtn.Width = base.Width - 1;
-            this.Height = height;
+            // this.Height = height;
         }
     }
 

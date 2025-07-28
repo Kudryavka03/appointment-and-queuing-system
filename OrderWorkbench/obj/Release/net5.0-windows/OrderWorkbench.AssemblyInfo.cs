@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrderWorkbench")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6c667f20f0f4031b5a5ca7c51f45d71b8835c72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2872ba93e0f1b7d459b8b3fe5a1d7640a9bc4ed0")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrderWorkbench")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrderWorkbench")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -48,6 +48,10 @@ namespace OrderScreen
             TopMost = true;
             string time = DateTime.Now.ToString();
             label1.Text = title + "      " + time;
+            if (Window1Label.Font.Size != (float)OperatorID)
+            {
+                Window1Label.Font = new Font("微软雅黑", OperatorID, FontStyle.Bold);
+            }
             try
             {
                 int[] arr = new int[5];
@@ -176,9 +180,11 @@ namespace OrderScreen
         private void button1_Click(object sender, EventArgs e)
         {
             timer1.Enabled=false;
+            this.TopMost = false;
             SettingForm settingForm = new SettingForm();
             settingForm.ShowDialog();
             timer1.Enabled = true;
+            this.TopMost = true;
         }
 
         private void OrderClientOperatorForm_FormClosed(object sender, FormClosedEventArgs e)
