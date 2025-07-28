@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrderScreen")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2872ba93e0f1b7d459b8b3fe5a1d7640a9bc4ed0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97a5b0166b195325c69b6d4416018f7034db3a5a")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrderScreen")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrderScreen")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

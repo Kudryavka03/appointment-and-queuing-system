@@ -241,9 +241,14 @@ public class GetStatusController : ControllerBase
     }
     [Route("GetStatus/GetCurrentLastestOrder")]
 
-	public async Task<string> GetCurrentLastestOrder()
+	public async Task<string> GetCurrentLastestOrder()	 // 准备 总人数 预计
 	{
-		return DataClass.LastestOrderNum + ","+((DataClass.uuid == 0) ? "0" : DataClass.uuid.ToString());
+		return DataClass.LastestOrder + ","+((DataClass.uuid == 0) ? "0" : DataClass.uuid.ToString()) + "," + ((DataClass.uuid == 0) ? "0" : (DataClass.uuid - DataClass.LastestOrderNum).ToString());
 	}
+    [Route("GetStatus/RemoteGetStatus")]
+    public async Task<string> GetSpeed()
+	{
+        return DataClass.LastestOrderNum + "," + ((DataClass.uuid == 0) ? "0" : DataClass.uuid.ToString())+","+DataClass.reportSpeed;
+    }
 
 }

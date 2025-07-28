@@ -2,687 +2,433 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>取号台</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>实时办理状态监控</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
-            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            background: linear-gradient(135deg, #1a2a6c, #2a5298, #3a7bd5);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 15px;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
         }
         
         .container {
-            width: 100%;
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .header {
-            background: linear-gradient(to right, #2c3e50, #4a6491);
-            color: white;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            border-bottom: 4px solid #3498db;
-        }
-        
-        .header h1 {
-            font-size: 2.4rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-        
-        .header p {
-            color: #ecf0f1;
-            font-size: 1.15rem;
-            opacity: 0.95;
-            max-width: 600px;
+            max-width: 480px;
             margin: 0 auto;
-            line-height: 1.6;
+            padding: 10px;
         }
         
-        .content {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px 0 15px;
+            position: relative;
         }
         
-        .card {
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            padding: 30px;
-            transition: all 0.4s ease;
-            border: 1px solid #eef2f7;
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
         }
         
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin: 0 auto;
+            line-height: 1.4;
+            max-width: 300px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 22px 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        
+        .processed::before {
+            background: linear-gradient(90deg, #00c853, #64dd17);
+        }
+        
+        .pending::before {
+            background: linear-gradient(90deg, #ff9100, #ffc400);
+        }
+        
+        .speed::before {
+            background: linear-gradient(90deg, #2962ff, #448aff);
         }
         
         .card-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            color: #2c3e50;
-            font-size: 1.6rem;
-            font-weight: 600;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f4f8;
-        }
-        
-        .card-title i {
-            width: 50px;
-            height: 50px;
-            background: #3498db;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .btn {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            border: none;
-            padding: 16px 30px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            width: 100%;
-            font-weight: 600;
-            margin-top: 15px;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-        }
-        
-        .btn:hover {
-            background: linear-gradient(135deg, #2980b9, #3498db);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(52, 152, 219, 0.4);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-        }
-        
-        .btn-get {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
-        }
-        
-        .btn-get:hover {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            box-shadow: 0 7px 20px rgba(46, 204, 113, 0.4);
-        }
-        
-        .btn:disabled {
-            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-            opacity: 0.7;
-        }
-        
-        .ticket-display {
+            font-size: 1.15rem;
+            font-weight: 500;
             text-align: center;
-            padding: 30px;
-            background: linear-gradient(to right, #f8f9fa, #eef2f7);
-            border-radius: 15px;
-            margin: 25px 0;
-            border: 3px dashed #3498db;
+            margin-bottom: 15px;
             position: relative;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.5s ease;
+            padding-bottom: 8px;
         }
         
-        .ticket-display.active {
-            border: 3px solid #2ecc71;
-            background: linear-gradient(to right, #f0fff4, #e6fffa);
-            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.15);
+        .card-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 35%;
+            width: 30%;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
         }
         
-        .ticket-number {
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: #e74c3c;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
-            letter-spacing: 8px;
-            margin: 20px 0;
-            transition: all 0.5s ease;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .info-text {
+        .card-value {
+            font-size: 2.8rem;
+            font-weight: 700;
             text-align: center;
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            padding: 15px;
-            background: #f1f2f6;
-            border-radius: 12px;
-            line-height: 1.7;
+            margin: 10px 0;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            letter-spacing: -1px;
+            transition: all 0.3s ease;
         }
         
-        .status-display {
+        .card-description {
+            text-align: center;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .progress-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 22px 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .progress-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .progress-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            width: 40%;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .progress-bars {
+            margin: 20px 0;
+        }
+        
+        .progress-item {
+            margin-bottom: 20px;
+        }
+        
+        .progress-label {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(to right, #ecf0f1, #dfe6e9);
-            padding: 25px;
-            border-radius: 15px;
-            margin-top: 25px;
-            gap: 15px;
-        }
-        
-        .status-item {
-            text-align: center;
-            flex: 1;
-            padding: 15px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .status-item.full-width {
-            flex: 2;
-            text-align: center;
-        }
-        
-        .status-label {
-            font-size: 1.1rem;
-            color: #7f8c8d;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-        
-        .status-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #3498db;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.4;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .status-value.progress-info {
-            font-size: 1.6rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-        
-        .status-value.your-ticket {
-            color: #e74c3c;
-            font-size: 2.5rem;
-        }
-        
-        .loading {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(52, 152, 219, 0.2);
-            border-radius: 50%;
-            border-top-color: #3498db;
-            animation: spin 1s ease-in-out infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 25px;
-            color: #7f8c8d;
-            font-size: 1rem;
-            background: #f8f9fa;
-            border-top: 1px solid #ecf0f1;
-            line-height: 1.7;
-        }
-        
-        .screenshot-hint {
-            background: linear-gradient(to right, #fff9db, #fff3bf);
-            color: #e67700;
-            padding: 20px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            margin-top: 25px;
-            border-left: 5px solid #ffd43b;
-            font-size: 1.1rem;
-        }
-        
-        .screenshot-hint i {
-            font-size: 2.5rem;
-            flex-shrink: 0;
-        }
-        
-        .api-status {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .api-status-item {
-            flex: 1;
-            min-width: 200px;
-            padding: 15px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        .api-status-label {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 0.95rem;
         }
         
-        .api-status-value {
-            font-family: monospace;
-            color: #3498db;
-            word-break: break-all;
-            font-size: 0.9rem;
+        .progress-bar {
+            height: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9px;
+            overflow: hidden;
+            position: relative;
         }
         
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.9rem;
-            }
-            
-            .ticket-number {
-                font-size: 3.2rem;
-                letter-spacing: 5px;
-            }
-            
-            .status-display {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .status-item.full-width {
-                width: 100%;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .card {
-                padding: 25px 20px;
-            }
-            
-            .card-title {
-                font-size: 1.4rem;
-            }
+        .progress-fill {
+            height: 100%;
+            border-radius: 9px;
+            transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                        transparent, 
+                        rgba(255,255,255,0.2), 
+                        transparent);
+            animation: shine 1.5s infinite;
+        }
+        
+        .processed-fill {
+            background: linear-gradient(90deg, #00c853, #64dd17);
+        }
+        
+        .pending-fill {
+            background: linear-gradient(90deg, #ff9100, #ffc400);
+        }
+        
+        .time-estimate {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+        
+        .time-value {
+            font-weight: 700;
+            color: #ffc400;
+            font-size: 1.3rem;
+            margin: 0 5px;
+        }
+        
+        .refresh-info {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.85;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .last-update {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+        
+        /* 动画效果 */
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         
         .pulse {
-            animation: pulse 2s infinite;
+            animation: pulse 1.5s;
         }
         
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
         
-        .highlight {
-            color: #e74c3c;
-            font-weight: bold;
+        .loading .card-value {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            width: 80%;
+            margin: 10px auto;
+            height: 50px;
+            color: transparent;
+            position: relative;
+            overflow: hidden;
         }
         
-        .bounce {
-            animation: bounce 0.8s ease infinite;
+        .loading .card-value::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 1.5s infinite;
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .loading .progress-fill {
+            animation: loading-pulse 1.5s infinite;
         }
         
-        .message {
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            text-align: center;
-            font-weight: 500;
+        @keyframes loading-pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.5; }
         }
         
-        .error {
-            background: #ffebee;
-            color: #c62828;
-            border: 1px solid #ffcdd2;
-        }
-        
-        .success {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #c8e6c9;
-        }
-        
-        .refresh-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-            color: #7f8c8d;
-            font-size: 0.95rem;
-        }
-        
-        .refresh-indicator i {
-            color: #3498db;
-            animation: spin 2s linear infinite;
-        }
-        
-        .auto-refresh-badge {
-            background: #3498db;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-left: 10px;
+        /* 响应式调整 */
+        @media (min-width: 400px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .speed {
+                grid-column: span 2;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-ticket-alt bounce"></i>信宜市教育局 - 学生发展中心 取号台</h1>
-            <p>办理事项：国家生源地助学贷款</p>
-        </div>
+        <header>
+            <h1>业务办理实时监控</h1>
+            <p class="subtitle">信宜市生源地助学贷款 - 信宜四中办理点</p>
+        </header>
         
-        <div class="content">
-            <div class="card">
-                <h2 class="card-title"><i class="fas fa-qrcode"></i> 取号 </h2>
-                <p>点击下方按钮获取您的排队号码，此号码将作为您办理业务的唯一凭证</p>
-                <p>取号完成后，划到网页最下面，即可查看服务台当前的办理进度</p>
-                <p><span class="highlight">如果您已经取完号，并且已经截图保存号码，请不要再次取号。再次取号将会占用名额，影响其他还未取号的人。</p>
-                
-                <button id="getNumberBtn" class="btn btn-get">
-                    <i class="fas fa-plus-circle"></i> 获取排队号码
-                </button>
-                
-                <div class="ticket-display" id="ticketDisplay">
-                    <div id="ticketResult">
-                        <i class="fas fa-ticket-alt" style="font-size: 4rem; color: #bdc3c7; margin-bottom: 20px;"></i>
-                        <p style="font-size: 1.2rem; color: #7f8c8d;">您的号码将显示在此区域</p>
-                        <p style="margin-top: 10px; color: #95a5a6;">请点击上方按钮获取号码</p>
-                    </div>
-                </div>
-                
-                <div class="screenshot-hint">
-                    <i class="fas fa-camera"></i>
-                    <div>
-                        <p><span class="highlight">重要提示：</p>
-                        <p><span class="highlight">取号完成后也请不要关闭该网页，取号完成后请立即截图。</p>
-                        <p>此号码是您办理业务的唯一凭证，请妥善保管，遗失号码后需要重新排队。</p>
-                    </div>
-                </div>
+        <div class="stats-grid">
+            <div class="stat-card processed">
+                <div class="card-title">已办理人数</div>
+                <div class="card-value" id="processed">20</div>
+                <p class="card-description">今日已成功办理</p>
             </div>
             
-            <div class="card">
-                <h2 class="card-title"><i class="fas fa-chart-line"></i> 办理进度跟踪</h2>
-                <p>系统将每10秒自动刷新一次进度，您也可以手动刷新</p>
-                
-                <button id="getStatusBtn" class="btn">
-                    <i class="fas fa-sync-alt"></i> 手动刷新进度
-                </button>
-                
-                <div id="statusMessage" class="message" style="display: none;"></div>
-                
-                <div class="status-display">
-                    <div class="status-item full-width">
-                        <div class="status-label">当前办理进度</div>
-                        <div id="progressInfo" class="status-value progress-info">--</div>
-                    </div>
-                    <div class="status-item">
-                        <div class="status-label">您的号码</div>
-                        <div id="yourNumber" class="status-value your-ticket">--</div>
-                    </div>
-                </div>
-                
-                <div class="refresh-indicator" id="refreshIndicator">
-                    <i class="fas fa-sync"></i>
-                    <span>自动刷新倒计时: <span id="countdown">10</span> 秒</span>
-                    <span class="auto-refresh-badge">自动刷新已启用</span>
-                </div>
+            <div class="stat-card pending">
+                <div class="card-title">待办理人数</div>
+                <div class="card-value" id="pending">35</div>
+                <p class="card-description">当前等待处理</p>
             </div>
             
+            <div class="stat-card speed">
+                <div class="card-title">处理时速（最近10分钟）</div>
+                <div class="card-value" id="speed">4</div>
+                <p class="card-description">人/10分钟 (平均处理速度)</p>
+            </div>
         </div>
         
-        <div class="footer">
-            <p>新沂市</p>
-            <p>温馨提示: 请勿重复取号，过号需重新排队</p>
+
+        
+        <div class="refresh-info">
+            <div class="last-update">
+                最后更新: <span id="last-update">刚刚</span>
+            </div>
+            <div>数据每 15 秒自动刷新</div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const getNumberBtn = document.getElementById('getNumberBtn');
-            const getStatusBtn = document.getElementById('getStatusBtn');
-            const ticketResult = document.getElementById('ticketResult');
-            const ticketDisplay = document.getElementById('ticketDisplay');
-            const progressInfo = document.getElementById('progressInfo');
-            const yourNumber = document.getElementById('yourNumber');
-            const statusMessage = document.getElementById('statusMessage');
-            const countdownEl = document.getElementById('countdown');
-            const refreshIndicator = document.getElementById('refreshIndicator');
+        // 模拟API返回数据
+        function fetchData() {
+            return fetch("http://127.0.0.1:888/GetStatus/RemoteGetStatus")
+                .then(response => response.text());
+        }
+        
+        // 更新页面数据
+        function updateUI(data) {
+            const [processed, pending, speed] = data.split(',');
             
-            let userTicketNumber = null;
-            let refreshTimer = null;
-            let countdown = 10;
+            // 更新卡片数据
+            document.getElementById('processed').textContent = processed;
+            document.getElementById('pending').textContent = parseInt(pending) - parseInt(processed);
+            document.getElementById('speed').textContent = speed;
             
-            // 显示消息函数
-            function showMessage(message, isError = false) {
-                statusMessage.textContent = message;
-                statusMessage.className = isError ? 'message error' : 'message success';
-                statusMessage.style.display = 'block';
-                
-                // 5秒后隐藏消息
-                setTimeout(() => {
-                    statusMessage.style.display = 'none';
-                }, 5000);
-            }
+            // 更新进度条
             
-            // 开始自动刷新
-            function startAutoRefresh() {
-                // 清除现有定时器
-                if (refreshTimer) {
-                    clearInterval(refreshTimer);
-                }
-                
-                // 立即执行一次刷新
-                fetchProgress();
-                
-                // 设置定时器每10秒刷新一次
-                refreshTimer = setInterval(() => {
-                    fetchProgress();
-                }, 10000);
-                
-                // 启动倒计时更新
-                startCountdown();
-            }
+            document.getElementById('progress-processed').style.width = `${progressPercent}%`;
+            document.getElementById('progress-pending').style.width = `${pendingPercent}%`;
             
-            // 倒计时更新
-            function startCountdown() {
-                countdown = 10;
-                updateCountdown();
-                
-                const countdownInterval = setInterval(() => {
-                    countdown--;
-                    updateCountdown();
-                    
-                    if (countdown <= 0) {
-                        countdown = 10;
-                    }
-                }, 1000);
-            }
+            // 更新进度标签
+            document.getElementById('processed-label').textContent = processed;
+            document.getElementById('pending-label').textContent = pending;
             
-            // 更新倒计时显示
-            function updateCountdown() {
-                countdownEl.textContent = countdown;
-            }
+            // 更新预计剩余时间
+            const estimatedTime = (parseInt(pending) / parseInt(speed)).toFixed(2);
+       
             
-            // 获取进度信息
-            async function fetchProgress() {
-                if (!userTicketNumber) return;
-                
-                // 显示加载状态
-                progressInfo.innerHTML = '<div class="loading"></div>';
-                getStatusBtn.disabled = true;
-                
-                try {
-                    // 构建包含用户号码的URL
-                    const apiUrl = `http://127.0.0.1:888/GetStatus/GetCurrentId/${userTicketNumber}`;
-                    
-                    // 调用API获取进度
-                    const response = await fetch(apiUrl);
-                    
-                    if (!response.ok) {
-                        throw new Error(`API请求失败: ${response.status}`);
-                    }
-                    
-                    // 获取返回的文本
-                    const progressText = await response.text();
-                    
-                    // 更新显示
-                    progressInfo.textContent = progressText;
-                    
-                    // 显示成功消息
-                    // showMessage(`进度已刷新: ${progressText}`, false);
-                    
-                } catch (error) {
-                    console.error('获取进度失败:', error);
-                    progressInfo.textContent = '获取进度失败';
-                    showMessage(`获取进度失败: ${error.message || '网络错误'}`, true);
-                } finally {
-                    getStatusBtn.disabled = false;
-                }
-            }
+            // 更新最后更新时间
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('last-update').textContent = timeString;
             
-            // 获取排队号码
-            getNumberBtn.addEventListener('click', async function() {
-                // 显示加载动画
-                ticketResult.innerHTML = '<div class="loading"></div>';
-                getNumberBtn.disabled = true;
-                
-                try {
-                    // 调用真实API获取号码
-                    const response = await fetch('http://127.0.0.1:888/GetStatus/GenNewUuid');
-                    
-                    if (!response.ok) {
-                        throw new Error(`API请求失败: ${response.status}`);
-                    }
-                    
-                    // 获取返回的数字
-                    const ticketNumber = await response.text();
-                    const vCodeReq = await fetch(`http://127.0.0.1:888/GetStatus/GetVerifyCode/${ticketNumber}`);
-                    const verifyCode = await vCodeReq.text();
-                    userTicketNumber = ticketNumber;
-                    
-                    // 显示结果
-                    ticketResult.innerHTML = `
-                        <div style="font-size: 1.2rem; margin-bottom: 10px;">您的排队号码是</div>
-                        <div class="ticket-number pulse">${ticketNumber}</div>
-                        <div style="font-size: 1.2rem; margin-bottom: 10px;">校验码</div>
-                        <div class="">${verifyCode}</div>
-                        <div style="font-size: 1.1rem; margin-top: 15px; color: #27ae60;">
-                            <i class="fas fa-check-circle"></i> 取号成功！
-                        </div>
-                    `;
-                    
-                    // 激活票号显示区域
-                    ticketDisplay.classList.add('active');
-                    
-                    // 更新您的号码显示
-                    yourNumber.textContent = ticketNumber;
-                    
-                    // 显示成功消息
-                    showMessage(`取号成功！您的排队号码是 ${ticketNumber}，请截图保存`, false);
-                    
-                    // 禁用取号按钮
-                    getNumberBtn.disabled = true;
-                    getNumberBtn.textContent = '已取号';
-                    
-                    // 开始自动刷新进度
-                    startAutoRefresh();
-                    
-                    // 显示自动刷新指示器
-                    refreshIndicator.style.display = 'flex';
-                    
-                } catch (error) {
-                    console.error('取号失败:', error);
-                    ticketResult.innerHTML = `
-                        <div style="color: #e74c3c; font-size: 3rem; margin: 15px 0;">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <div style="font-size: 1.2rem; color: #c0392b;">
-                            取号失败
-                        </div>
-                        <div style="margin-top: 15px; color: #7f8c8d;">
-                            ${error.message || '请稍后再试'}
-                        </div>
-                    `;
-                    showMessage(`取号失败: ${error.message || '网络错误'}`, true);
-                    getNumberBtn.disabled = false;
-                }
+            // 添加动画效果
+            const cards = document.querySelectorAll('.stat-card');
+            cards.forEach(card => {
+                card.classList.add('pulse');
+                setTimeout(() => card.classList.remove('pulse'), 1000);
             });
+        }
+        
+        // 添加加载状态
+        function showLoading() {
+            document.body.classList.add('loading');
+        }
+        
+        // 移除加载状态
+        function hideLoading() {
+            document.body.classList.remove('loading');
+        }
+        
+        // 主函数：获取数据并更新UI
+        async function updateData() {
+            showLoading();
+            try {
+                const data = await fetchData();
+                updateUI(data);
+            } catch (error) {
+                console.error('获取数据失败:', error);
+            } finally {
+                setTimeout(hideLoading, 300);
+            }
+        }
+        
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始更新
+            updateData();
             
-            // 手动刷新按钮
-            getStatusBtn.addEventListener('click', function() {
-                if (!userTicketNumber) {
-                    showMessage("请先获取您的排队号码", true);
-                    return;
-                }
-                fetchProgress();
-                countdown = 10; // 重置倒计时
-                updateCountdown();
-            });
+            // 每5秒更新一次
+            setInterval(updateData, 15000);
+            
+            // 添加更新时间
+            const now = new Date();
+            document.getElementById('last-update').textContent = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         });
     </script>
 </body>

@@ -60,6 +60,7 @@ namespace OrderScreen
                 var current_status = await httpClient.GetStringAsync(OperatorCenterURL + "/GetStatus/GetCurrentLastestOrder");
                 var lastest_id = Convert.ToInt32(current_status.Split(',')[1]);
                 var lastest_order = Convert.ToInt32(current_status.Split(',')[0]);
+                var lastest_wait = Convert.ToInt32(current_status.Split(',')[2]);
                 for (int i = 1; i < 6; i++)
                 {
                     var id = await httpClient.GetStringAsync(OperatorCenterURL + "/GetStatus/" + i);
@@ -96,7 +97,7 @@ namespace OrderScreen
                     else if (!id.Contains("暂停")) resultTextBuilder.Append($"{i} 号窗口无业务\r\n");
                     else resultTextBuilder.Append($"{i} 号窗口暂停服务\r\n");
                 }
-                if (lastest_id + 1 != 0 && lastest_id - lastest_order  >= 1)
+                if (lastest_wait != 0)
                 {
                     resultTextBuilder.Append($"请 {lastest_id } 号用户准备 | 等待排队：{lastest_id - lastest_order} 人\r\n");
                 }

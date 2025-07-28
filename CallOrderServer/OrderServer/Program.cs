@@ -32,7 +32,11 @@ public class Program
         DataClass.initData(5);
 		Thread t = new Thread(DataClass.Listener);
 		t.Start();
-		CreateHostBuilder(args).Build().Run();
+        Thread rp = new Thread(DataClass.ReportEx);
+        rp.Start();
+        Thread ats = new Thread(DataClass.AutoSaveLog);
+        ats.Start();
+        CreateHostBuilder(args).Build().Run();
 	}
 
     public static void Log(string log,[CallerMemberName] string callerName = "",

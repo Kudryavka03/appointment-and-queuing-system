@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Metadata;
@@ -18,7 +19,8 @@ public class DataClass
 	public static string desc = "My favourite Band is Roselia,Poppin Party and Afterglow. Like Yukina Best,Yukina I Love You!!! Kasumi I Love You!!!";
 	public static string LastestOrder = "0";
     public static int LastestOrderNum = 0;
-
+	public static int speed = 0;
+	public static int reportSpeed = 0;
     public static readonly int highLevelFrontInt = 1000;
 	public static List<EnumStatus> workQueueStatus = new List<EnumStatus>();
 
@@ -222,6 +224,8 @@ public class DataClass
 				SetNextID(isAvailableWindow[k], index.id);
 				Program.Log("将" + index.id + "号 业务："+ParserTypeToString(index.typeStr)+ " 分配给" + (isAvailableWindow[k] + 1) + "号窗");
 				LastestOrderNum++;
+				LastestOrder = index.id.ToString();
+                speed++;
                 WriteReport(new OrderReportObject(Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmmss")), isAvailableWindow[k] + 1,index.eType, index.id));
 				return 1;
 			}
@@ -245,7 +249,8 @@ public class DataClass
                 Program.Log($"高优先级分配：号码{num} 分配至固定窗口{win+1}");
 				string time = DateTime.Now.ToString("yyyyMMddHHmmss");
                 WriteReport(new OrderReportObject(Convert.ToInt64(time), win+1, enumTypes, num));
-				lock (lockKasumiHighLevelLists)
+                speed++;
+                lock (lockKasumiHighLevelLists)
 				{
 					kasumiHighLevelLists.RemoveAt(i);   // 移除，性能优化
 				}
@@ -351,6 +356,44 @@ public class DataClass
 			Thread.Sleep(50);
 		}
 	}
+
+	public static void ReportEx()
+	{
+        Program.Log($"管理员已为此服务器配置自动时速监测，每一次监测记录时长为10分钟.");
+        int min = 10;
+		while (true)
+		{
+
+			Program.Log($"当前业务办理时速: {speed}p / {min} min");
+			reportSpeed = speed;
+			speed = 0;
+			Thread.Sleep((int)min*60000);
+        }
+	}
+	public static void AutoSaveLog()
+	{
+        Program.Log($"管理员已为此服务器配置自动日志保存，每次保存间隔时长为1分钟.");
+        while (true)
+		{
+			try
+			{
+				var logFilesName = Program.StartTimestamp+".txt";
+				var logs = Program.logs;
+				var result = "";
+				foreach (var log in logs)
+				{
+					result += log;
+					result += "\r\n";
+				}
+				File.WriteAllText(logFilesName, result);
+			}
+			catch (Exception e) { 
+				Program.Log("日志保存失败："+e.Message);
+			}
+			Thread.Sleep(60000);
+        }
+
+    }
 
 	public static void SetStatusData(int index, EnumStatus enumStatus)
 	{
