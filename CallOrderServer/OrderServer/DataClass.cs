@@ -17,6 +17,7 @@ public class DataClass
 {
 	public static string desc = "My favourite Band is Roselia,Poppin Party and Afterglow. Like Yukina Best,Yukina I Love You!!! Kasumi I Love You!!!";
 	public static string LastestOrder = "0";
+    public static int LastestOrderNum = 0;
 
     public static readonly int highLevelFrontInt = 1000;
 	public static List<EnumStatus> workQueueStatus = new List<EnumStatus>();
@@ -220,7 +221,7 @@ public class DataClass
 				workQueueStatus[isAvailableWindow[k]] = EnumStatus.STANDBY;
 				SetNextID(isAvailableWindow[k], index.id);
 				Program.Log("将" + index.id + "号 业务："+ParserTypeToString(index.typeStr)+ " 分配给" + (isAvailableWindow[k] + 1) + "号窗");
-				LastestOrder = index.id.ToString();
+				LastestOrderNum++;
                 WriteReport(new OrderReportObject(Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmmss")), isAvailableWindow[k] + 1,index.eType, index.id));
 				return 1;
 			}

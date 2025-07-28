@@ -243,7 +243,7 @@ public class GetStatusController : ControllerBase
 
 	public async Task<string> GetCurrentLastestOrder()
 	{
-		return DataClass.LastestOrder + ","+((DataClass.uuid == 0) ? "0" : DataClass.uuid.ToString());
+		return DataClass.LastestOrderNum + ","+((DataClass.uuid == 0) ? "0" : DataClass.uuid.ToString());
 	}
 
 }
