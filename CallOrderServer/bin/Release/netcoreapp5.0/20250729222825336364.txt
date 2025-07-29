@@ -1,0 +1,39 @@
+[7/29/2025 10:28:25 PM] [Main] 系统启动：20250729222825336364
+[7/29/2025 10:28:25 PM] [initData] 开始初始化窗口数据...
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：1号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：1号窗口 YukinaBoard 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：2号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：2号窗口 YukinaBoard 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：3号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：3号窗口 YukinaBoard 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：4号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：4号窗口 YukinaBoard 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：5号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口初始化：5号窗口 YukinaBoard 成功.
+[7/29/2025 10:28:25 PM] [initData] 窗口数据初始化成功.
+[7/29/2025 10:28:25 PM] [ReportEx] 管理员已为此服务器配置自动时速监测，每一次监测记录时长为10分钟.
+[7/29/2025 10:28:25 PM] [ReportEx] 当前业务办理时速: 0p / 10 min
+[7/29/2025 10:28:25 PM] [Listener] 开始监听取号队列...
+[7/29/2025 10:28:25 PM] [AutoSaveLog] 管理员已为此服务器配置自动日志保存，每次保存间隔时长为1分钟.
+[7/29/2025 10:28:25 PM] [CreateHostBuilder] UseUrls: http://0.0.0.0:888/
+[7/29/2025 10:28:25 PM] [CreateHostBuilder] 叫号后端启动成功。
+[7/29/2025 10:28:34 PM] [GenNewUuid] 新取号：1号 业务类型：[SIGN] - 校验码：1753799314120
+[7/29/2025 10:28:36 PM] [CallStart] 窗口继续：1窗
+[7/29/2025 10:28:36 PM] [Allocator] 分配器: 窗口空闲情况：1 
+[7/29/2025 10:28:36 PM] [Allocator] 随机数：1   范围：1 - 1
+[7/29/2025 10:28:36 PM] [Allocator] 将1号 业务：[SIGN] 分配给1号窗
+[7/29/2025 10:28:40 PM] [GenNewUuid] 新取号：2号 业务类型：[INFOCHANGE] - 校验码：1753799320047
+[7/29/2025 10:28:42 PM] [CallFinished] 窗口：1窗 呼叫下一号
+[7/29/2025 10:28:42 PM] [Allocator] 分配器: 窗口空闲情况：1 
+[7/29/2025 10:28:42 PM] [Allocator] 随机数：1   范围：1 - 1
+[7/29/2025 10:28:42 PM] [Allocator] 将2号 业务：[INFOCHANGE] 分配给1号窗
+[7/29/2025 10:29:03 PM] [GenNewHighLevelUuid] 新高优先级取号：1001号 - 固定窗口分配：1 操作人：0 说明：插队
+[7/29/2025 10:29:06 PM] [CallFinished] 窗口：1窗 呼叫下一号
+[7/29/2025 10:29:06 PM] [AllocatorHighLevel] 高优先级分配：号码1001 分配至固定窗口1
+[7/29/2025 10:29:16 PM] [GenNewHighLevelUuid] 新高优先级取号：1002号 - 固定窗口分配：1 操作人：0 说明：插队
+[7/29/2025 10:29:17 PM] [GenNewHighLevelUuid] 新高优先级取号：1003号 - 固定窗口分配：1 操作人：0 说明：插队
+[7/29/2025 10:29:17 PM] [GenNewHighLevelUuid] 新高优先级取号：1004号 - 固定窗口分配：1 操作人：0 说明：插队
+[7/29/2025 10:29:19 PM] [CallFinished] 窗口：1窗 呼叫下一号
+[7/29/2025 10:29:19 PM] [AllocatorHighLevel] 高优先级分配：号码1002 分配至固定窗口1
+[7/29/2025 10:29:22 PM] [CallFinished] 窗口：1窗 呼叫下一号
+[7/29/2025 10:29:22 PM] [AllocatorHighLevel] 高优先级分配：号码1003 分配至固定窗口1

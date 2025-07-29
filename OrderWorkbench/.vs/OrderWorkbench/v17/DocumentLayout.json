@@ -42,8 +42,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -106,7 +114,7 @@
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAHQAAAAAAAAAAAAkwH4AAAAkAAAA",
+              "ViewState": "AQIAADQAAAAAAAAAAAAswEsAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-27T04:01:30.566Z",
               "EditorCaption": ""
@@ -142,8 +150,7 @@
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\OrderWorkbench\\Form1.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "Form1.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T03:58:26.263Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
+              "WhenOpened": "2025-07-27T03:58:26.263Z"
             }
           ]
         }

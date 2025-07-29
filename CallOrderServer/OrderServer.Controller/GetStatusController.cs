@@ -14,7 +14,7 @@ public class GetStatusController : ControllerBase
 	}
 
 	[Route("GetStatus/{OperatorID}")]
-	public async Task<string> Index(string OperatorID)
+	public async Task<string> GetStatusNumber(string OperatorID)
 	{
 		EnumStatus a = DataClass.GetWorkStatusD(getOperatorID(OperatorID));
 		int b = DataClass.GetCurrentNum(getOperatorID(OperatorID));
@@ -24,8 +24,27 @@ public class GetStatusController : ControllerBase
 		}
 		return (b == -1) ? "暂无分配" : b.ToString();
 	}
+    [Route("GetStatus/GetType/{OperatorID}")]
+    public async Task<string> GetStatusNumberType(string OperatorID)
+    {
+		try
+		{
+			EnumStatus a = DataClass.GetWorkStatusD(getOperatorID(OperatorID));
+			int b = DataClass.GetCurrentNum(getOperatorID(OperatorID));
+			if (a == EnumStatus.STOP)
+			{
+				return "";
+			}
+			return (b == -1) ? "" : DataClass.GetCurrentNumType(b);
+		}
+		catch (Exception e)
+		{
+			return "[HIGHLEVEL]";
+		}
+    }
 
-	[Route("SetIDs/{num}")]
+
+    [Route("SetIDs/{num}")]
 	public async Task<string> SetIDsIndex(string num)
 	{
 		int oldNum = DataClass.uuid;

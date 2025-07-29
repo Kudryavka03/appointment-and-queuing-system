@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -29,6 +30,7 @@ public class DataClass
     public static List<List<EnumType>> workQueuesType = new List<List<EnumType>>();
 
     public static List<OrderReportObject> OrderReportObject = new List<OrderReportObject>();
+	public static ConcurrentDictionary<int,List<EnumType>> id2type = new ConcurrentDictionary<int, List<EnumType>>();
 
 	public static List<KasumiHighLevelList> kasumiHighLevelLists = new List<KasumiHighLevelList>();
     public static object lockKasumiHighLevelLists = new object();
@@ -149,7 +151,17 @@ public class DataClass
 		}
 	}
 
-	public static void CallFinished(int index)
+    public static string GetCurrentNumType(int index)
+    {
+        lock (lockWorkQueue)
+        {
+			var t1 = id2type[index];
+			if (t1 == null) return "";
+			return ParserTypeToString(t1);
+        }
+    }
+
+    public static void CallFinished(int index)
 	{
 		lock (lockWorkQueue)
 		{
@@ -221,7 +233,8 @@ public class DataClass
 				int k = getCryptoRandom(0, isAvailableWindow.Count);	// 密码级随机数
 				Program.Log("随机数：" + (k + 1) + "   范围：1 - " + isAvailableWindow.Count);
 				workQueueStatus[isAvailableWindow[k]] = EnumStatus.STANDBY;
-				SetNextID(isAvailableWindow[k], index.id);
+                id2type.TryAdd(index.id,index.eType);
+                SetNextID(isAvailableWindow[k], index.id);
 				Program.Log("将" + index.id + "号 业务："+ParserTypeToString(index.typeStr)+ " 分配给" + (isAvailableWindow[k] + 1) + "号窗");
 				LastestOrderNum++;
 				LastestOrder = index.id.ToString();

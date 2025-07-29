@@ -30,6 +30,11 @@ public class WorkQueue	// WorkQueue就是对应窗口，其中有些
 	{
 		return type.Contains(eTypeTest);
 	}
+
+	public EnumType[] GetWorkType()
+	{
+		return type;
+	}
 	public int GetCurrentNum()
 	{
 		return currentNum;

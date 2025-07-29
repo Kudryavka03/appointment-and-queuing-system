@@ -60,7 +60,8 @@ namespace OrderWorkbench
         {
             try
             {
-                string result = await httpClient.GetStringAsync(OperatorCenterURL + "/GetStatus/" + OperatorID);
+                string result = await httpClient.GetStringAsync(OperatorCenterURL + "/GetStatus/" + OperatorID) + "     ";
+                result += await httpClient.GetStringAsync(OperatorCenterURL + "/GetStatus/GetType/" + OperatorID);
                 numLabel.Text = result;
                 Text = "工作台 - 已连接到调度中心 " + OperatorID + "号机";
                 nextBtn.Enabled = true;
