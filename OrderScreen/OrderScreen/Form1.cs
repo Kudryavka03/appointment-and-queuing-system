@@ -19,6 +19,7 @@ using System.Threading;
 using System.Runtime.CompilerServices;
 using System.Speech.Synthesis;
 using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace OrderScreen
 {
@@ -33,6 +34,14 @@ namespace OrderScreen
         bool isExitFlags = false;
         public string title;
 
+        [DllImport("user32.dll")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetActiveWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int Width, int Height, int flags);
         public OrderClientOperatorForm()
         {
             InitializeComponent();
@@ -45,9 +54,19 @@ namespace OrderScreen
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
+            try
+            {
+                SetForegroundWindow(base.Handle);
+            }
+            catch (Exception)
+            {
+            }
             TopMost = true;
             string time = DateTime.Now.ToString();
             label1.Text = title + "      " + time;
+            SetWindowPos(base.Handle, -1, 0, 0, 0, 0, 147);
+            SetActiveWindow(base.Handle);
+            SetForegroundWindow(base.Handle);
             if (Window1Label.Font.Size != (float)OperatorID)
             {
                 Window1Label.Font = new Font("微软雅黑", OperatorID, FontStyle.Bold);
