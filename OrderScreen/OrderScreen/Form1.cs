@@ -56,17 +56,19 @@ namespace OrderScreen
         {
             try
             {
+                TopMost = true;
+                SetForegroundWindow(base.Handle);
+                SetWindowPos(base.Handle, -1, 0, 0, 0, 0, 1 | 2);
+                SetActiveWindow(base.Handle);
                 SetForegroundWindow(base.Handle);
             }
             catch (Exception)
             {
             }
-            TopMost = true;
+ 
             string time = DateTime.Now.ToString();
             label1.Text = title + "      " + time;
-            SetWindowPos(base.Handle, -1, 0, 0, 0, 0, 147);
-            SetActiveWindow(base.Handle);
-            SetForegroundWindow(base.Handle);
+
             if (Window1Label.Font.Size != (float)OperatorID)
             {
                 Window1Label.Font = new Font("微软雅黑", OperatorID, FontStyle.Bold);
@@ -118,7 +120,7 @@ namespace OrderScreen
                 }
                 if (lastest_wait != 0)
                 {
-                    resultTextBuilder.Append($"请 {lastest_id } 号用户准备 | 等待排队：{lastest_id - lastest_order} 人\r\n");
+                    resultTextBuilder.Append($"请 {lastest_order + 1} 号用户准备 | 等待排队：{lastest_id - lastest_order} 人\r\n");
                 }
                 Window1Label.Text = resultTextBuilder.ToString();
                 this.Text = "叫号大屏 - 已连接到调度中心";
@@ -159,7 +161,7 @@ namespace OrderScreen
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            // this.WindowState = FormWindowState.Maximized;
             base.TopMost = true;
             try
             {

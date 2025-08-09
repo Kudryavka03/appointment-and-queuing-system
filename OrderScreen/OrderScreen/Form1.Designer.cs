@@ -38,9 +38,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = System.Drawing.Color.Black;
+            label1.BackColor = System.Drawing.Color.Transparent;
             label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label1.ForeColor = System.Drawing.Color.White;
+            label1.ForeColor = System.Drawing.Color.Transparent;
             label1.Location = new System.Drawing.Point(9, 15);
             label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
@@ -81,7 +81,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.Black;
+            BackColor = System.Drawing.Color.DarkBlue;
             ClientSize = new System.Drawing.Size(1097, 574);
             Controls.Add(button1);
             Controls.Add(Window1Label);
@@ -90,6 +90,7 @@
             Name = "OrderClientOperatorForm";
             Text = "OrderScreen";
             TopMost = true;
+            WindowState = System.Windows.Forms.FormWindowState.Maximized;
             FormClosed += OrderClientOperatorForm_FormClosed;
             Load += Form1_Load;
             Resize += OrderClientOperatorForm_Resize;
