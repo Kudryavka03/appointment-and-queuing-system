@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生源地信用助学贷款申请表</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --border-color: #dee2e6;
+            --text-color: #333;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-container {
+            padding: 25px 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .form-section:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-section h2 i {
+            margin-right: 10px;
+            font-size: 22px;
+        }
+        
+        .form-group {
+            margin-bottom: 18px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .required:after {
+            content: " *";
+            color: var(--danger-color);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        
+        .col {
+            flex: 1;
+            padding: 0 10px;
+            min-width: 200px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .family-member {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+        
+        .family-member h3 {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .delete-member {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background-color 0.3s;
+        }
+        
+        .delete-member:hover {
+            background-color: #c0392b;
+        }
+        
+        .delete-member:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+        }
+        
+        .btn-success:hover {
+            background-color: #219653;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+        }
+        
+        .signature-box {
+            border: 1px dashed #ccc;
+            height: 120px;
+            margin: 15px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            transform: translateX(200%);
+            transition: transform 0.4s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background-color: var(--success-color);
+        }
+        
+        .notification.error {
+            background-color: var(--danger-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #bdc3c7;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .step.active {
+            background: var(--primary-color);
+        }
+        
+        .step:not(:last-child):after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: #bdc3c7;
+            left: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+            
+            .col {
+                min-width: 100%;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .checkbox-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> 生源地信用助学贷款申请表</h1>
+            <p>请如实填写以下信息，所有带星号(*)的字段为必填项</p>
+        </header>
+        
+        <div class="form-container">
+            <div class="step-indicator">
+                <div class="step active">1</div>
+                <div class="step">2</div>
+                <div class="step">3</div>
+                <div class="step">4</div>
+            </div>
+            
+            <form id="loanApplicationForm">
+                <!-- 学校信息 -->
+                <div class="form-section">
+                    <h2><i class="fas fa-school"></i> 学校信息</h2>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="college_name" class="required">学校</label>
+                                <input type="text" id="colleg_name" name="college_name" required placeholder="请输入学校全称">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="deparment_name" class="required">院系</label>
+                                <input type="text" id="deparment_name" name="deparment_name" required placeholder="请输入院系名称">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="major_name" class="required">专业</label>
+                                <input type="text" id="major_name" name="major_name" required placeholder="请输入专业名称">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="grade" class="required">年级</label>
+                                <input type="text" id="grade" name="grade" required placeholder="例如：2023级">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="class">班级</label>
+                                <input type="text" id="class" name="class" placeholder="例如：计算机1班">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 基本信息 -->
+                <div class="form-section">
+                    <h2><i class="fas fa-user"></i> 基本信息</h2>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="NAME" class="required">姓名</label>
+                                <input type="text" id="NAME" name="NAME" required placeholder="请输入您的姓名">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>籍贯</label>
+                                <input type="text" value="广东信宜" readonly>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="id_number" class="required">身份证号码</label>
+                                <input type="text" id="id_number" name="id_number" required placeholder="请输入18位身份证号码">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="family_num" class="required">家庭人口</label>
+                                <input type="number" id="family_num" name="family_num" min="1" required placeholder="请输入家庭人口数">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="stu_phone_number" class="required">手机号码</label>
+                                <input type="tel" id="stu_phone_number" name="stu_phone_number" required placeholder="请输入您的手机号码">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 家庭通讯信息 -->
+                <div class="form-section">
+                    <h2><i class="fas fa-home"></i> 家庭通讯信息</h2>
+                    <div class="form-group">
+                        <label for="address" class="required">详细通讯地址</label>
+                        <input type="text" id="address" name="address" required placeholder="请输入详细家庭住址">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="postcode" class="required">邮政编码</label>
+                                <input type="text" id="postcode" name="postcode" required placeholder="请输入6位邮政编码">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="parent_phone_number" class="required">家长手机号码</label>
+                                <input type="tel" id="parent_phone_number" name="parent_phone_number" required placeholder="请输入家长手机号码">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 家庭成员情况 -->
+                <div class="form-section">
+                    <h2><i class="fas fa-users"></i> 家庭成员情况</h2>
+                    <div id="familyMembersContainer">
+                        <!-- 家庭成员将在这里动态添加 -->
+                    </div>
+                    <div class="form-group" style="text-align: center; margin-top: 20px;">
+                        <button type="button" id="addFamilyMember" class="btn btn-success">
+                            <i class="fas fa-plus-circle"></i> 添加家庭成员
+                        </button>
+                        <p style="margin-top: 10px; color: #7f8c8d; font-size: 14px;">
+                            至少填写2个家庭成员（以系统为准），最多添加6个家庭成员，如果系统提示不够，请继续添加
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <!-- 影响家庭经济困难状况有关信息 -->
+                <div class="form-section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> 影响家庭经济困难状况有关信息</h2>
+                    <div class="form-group">
+                        <label for="avg_ai" class="required">家庭人均年收入（元）</label>
+                        <input type="number" id="avg_ai" name="avg_ai" required placeholder="请输入家庭人均年收入，没有可不填">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="s1">家庭遭受自然灾害情况</label>
+                                <input type="text" id="s1" name="s1" placeholder="请简要描述自然灾害情况">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="s2">家庭遭受突发意外事件</label>
+                                <input type="text" id="s2" name="s2" placeholder="请简要描述突发意外事件">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="s3">家庭成员因残疾、年迈而劳动能力弱情况</label>
+                        <input type="text" id="s3" name="s3" placeholder="请简要描述相关情况">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="s4">家庭成员失业情况</label>
+                                <input type="text" id="s4" name="s4" placeholder="请简要描述失业情况">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="s5">家庭欠债情况</label>
+                                <input type="text" id="s5" name="s5" placeholder="请简要描述欠债情况">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="s6">其他情况</label>
+                        <textarea id="s6" name="s6" rows="3" placeholder="如有其他情况，请在此处说明"></textarea>
+                    </div>
+                </div>
+                
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-block">
+                        <i class="fas fa-paper-plane"></i> 提交认定表
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <footer>
+            <p>© 2025 生源地信用助学贷款认定表填写收集系统 | 信宜市学生发展中心</p>
+        </footer>
+    </div>
+    
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // 家庭成员计数器
+        let familyMemberCount = 0;
+        const MAX_FAMILY_MEMBERS = 6;
+        
+        // 添加家庭成员
+        function addFamilyMember() {
+            if (familyMemberCount >= MAX_FAMILY_MEMBERS) {
+                showNotification('最多只能添加' + MAX_FAMILY_MEMBERS + '位家庭成员', 'error');
+                return;
+            }
+            
+            familyMemberCount++;
+            const container = document.getElementById('familyMembersContainer');
+            
+            const memberDiv = document.createElement('div');
+            memberDiv.className = 'family-member';
+            memberDiv.innerHTML = `
+                <h3>
+                    家庭成员 ${familyMemberCount}
+                    <button type="button" class="delete-member" ${familyMemberCount === 1 ? 'disabled' : ''}>
+                        <i class="fas fa-trash"></i> 删除
+                    </button>
+                </h3>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>姓名</label>
+                            <input type="text" name="family_members[${familyMemberCount-1}][Name]" placeholder="请输入姓名">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>年龄</label>
+                            <input type="number" name="family_members[${familyMemberCount-1}][Age]" min="0" placeholder="请输入年龄">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>与学生关系</label>
+                            <input type="text" name="family_members[${familyMemberCount-1}][Rs]" placeholder="例如：父亲、母亲">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>工作（学习）单位</label>
+                            <input type="text" name="family_members[${familyMemberCount-1}][Workplace]" placeholder="请输入单位名称">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>职业</label>
+                            <input type="text" name="family_members[${familyMemberCount-1}][Pro]" placeholder="请输入职业">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>年收入（元）</label>
+                            <input type="number" name="family_members[${familyMemberCount-1}][Ai]" min="0" placeholder="请输入年收入">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>健康状况</label>
+                            <input type="text" name="family_members[${familyMemberCount-1}][Health]" placeholder="请输入健康状况">
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // 添加删除事件
+            const deleteBtn = memberDiv.querySelector('.delete-member');
+            deleteBtn.addEventListener('click', function() {
+                if (familyMemberCount > 1) {
+                    container.removeChild(memberDiv);
+                    familyMemberCount--;
+                    updateDeleteButtons();
+                }
+            });
+            
+            container.appendChild(memberDiv);
+            updateDeleteButtons();
+        }
+        
+        // 更新所有删除按钮状态
+        function updateDeleteButtons() {
+            const deleteButtons = document.querySelectorAll('.delete-member');
+            deleteButtons.forEach(btn => {
+                btn.disabled = familyMemberCount === 1;
+            });
+            
+            // 更新添加按钮状态
+            const addBtn = document.getElementById('addFamilyMember');
+            addBtn.disabled = familyMemberCount >= MAX_FAMILY_MEMBERS;
+        }
+        
+        // 显示通知
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 20000);
+        }
+        
+        // 表单提交处理
+        document.getElementById('loanApplicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 收集表单数据
+            const formData = new FormData(this);
+            const data = {};
+            
+            // 处理普通字段
+            formData.forEach((value, key) => {
+                // 处理复选框组
+                if (key === 'special_type') {
+                    if (!data[key]) data[key] = [];
+                    data[key].push(value);
+                } 
+                // 处理家庭成员
+                else if (key.startsWith('family_members')) {
+                    const match = key.match(/family_members\[(\d+)\]\[(\w+)\]/);
+                    if (match) {
+                        const index = parseInt(match[1]);
+                        const field = match[2];
+                        
+                        if (!data.family_members) data.family_members = [];
+                        if (!data.family_members[index]) data.family_members[index] = {};
+                        
+                        data.family_members[index][field] = value;
+                    }
+                }
+                // 处理普通字段
+                else {
+                    data[key] = value;
+                }
+            });
+            
+            // 处理日期格式
+            if (data.YYYYMMDD) {
+                const date = new Date(data.YYYYMMDD);
+                data.YYYYMMDD = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+            }
+            
+            // 显示提交成功消息
+            showNotification('申请表提交成功！正在处理数据...', 'success');
+            
+            // 模拟提交到服务器
+            setTimeout(() => {
+                console.log('提交数据:', data);
+                
+
+                fetch('http://127.0.0.1/genApplyForm', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                        throw new Error(text);
+
+                    });
+                    }
+                    
+                })
+                .then(data => {
+                    showNotification('认定表提交成功！您现在可以前往报到区进行打表。如需修改，修改完毕后重复提交即可。', 'success');
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    showNotification('提交失败: ' + error.message, 'error');
+                });
+            }, 10);
+        });
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加一个初始家庭成员
+            addFamilyMember();
+            
+            // 添加家庭成员按钮事件
+            document.getElementById('addFamilyMember').addEventListener('click', addFamilyMember);
+            
+            // 设置出生日期默认值（18岁）
+            const today = new Date();
+            const birthDate = new Date();
+            birthDate.setFullYear(today.getFullYear() - 18);
+            document.getElementById('YYYYMMDD').valueAsDate = birthDate;
+        });
+    </script>
+</body>
+</html>

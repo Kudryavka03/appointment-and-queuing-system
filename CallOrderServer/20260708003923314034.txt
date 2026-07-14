@@ -1,0 +1,133 @@
+[7/8/2026 12:24:12 AM] [Main] 系统启动：20260708002412466090
+[7/8/2026 12:24:12 AM] [Load] 未找到状态文件，将使用默认状态启动。
+[7/8/2026 12:24:12 AM] [ResetData] 开始初始化窗口数据...
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：1号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：1号窗口 YukinaBoard 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：2号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：2号窗口 YukinaBoard 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：3号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：3号窗口 YukinaBoard 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：4号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：4号窗口 YukinaBoard 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：5号窗口 业务：[SIGN,INFOCHANGE] 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口初始化：5号窗口 YukinaBoard 成功.
+[7/8/2026 12:24:12 AM] [ResetData] 窗口数据初始化成功.
+[7/8/2026 12:24:12 AM] [AutoSaveState] 管理员已为此服务器配置自动状态保存，每次保存间隔时长为15秒。
+[7/8/2026 12:24:12 AM] [ReportEx] 管理员已为此服务器配置自动时速监测，每一次监测记录时长为10分钟.
+[7/8/2026 12:24:12 AM] [AutoSaveLog] 管理员已为此服务器配置自动日志保存，每次保存间隔时长为1分钟.
+[7/8/2026 12:24:12 AM] [ReportEx] 当前业务办理时速: 0p / 10 min
+[7/8/2026 12:24:12 AM] [Listener] 开始监听取号队列...
+[7/8/2026 12:24:12 AM] [AutoSaveLog] 日志保存失败：Collection was modified; enumeration operation may not execute.
+[7/8/2026 12:24:12 AM] [CreateHostBuilder] UseUrls: http://0.0.0.0:888/
+[7/8/2026 12:24:12 AM] [CreateHostBuilder] 叫号后台启动成功。状态文件：E:\Coding\SmsForwardWeixin\CallOrderServer\bin\Release\netcoreapp5.0\order_state.json
+[7/8/2026 12:25:00 AM] [GenNewUuid] 新取号：1号 业务类型：[SIGN] - 校验码：1783441500344
+[7/8/2026 12:25:03 AM] [GenNewUuid] 新取号：2号 业务类型：[SIGN] - 校验码：1783441503891
+[7/8/2026 12:25:05 AM] [GenNewUuid] 新取号：3号 业务类型：[SIGN] - 校验码：1783441505067
+[7/8/2026 12:25:06 AM] [GenNewUuid] 新取号：4号 业务类型：[SIGN] - 校验码：1783441506210
+[7/8/2026 12:25:07 AM] [GenNewUuid] 新取号：5号 业务类型：[SIGN] - 校验码：1783441507171
+[7/8/2026 12:25:08 AM] [GenNewUuid] 新取号：6号 业务类型：[SIGN] - 校验码：1783441508571
+[7/8/2026 12:25:10 AM] [GenNewUuid] 新取号：7号 业务类型：[SIGN] - 校验码：1783441510515
+[7/8/2026 12:26:12 AM] [ChangeType] 窗口1 业务类型变更: [SIGN]
+[7/8/2026 12:26:25 AM] [CallStart] 窗口继续：1窗
+[7/8/2026 12:26:25 AM] [Allocator] 分配器: 窗口空闲情况：1 
+[7/8/2026 12:26:25 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:26:25 AM] [Allocator] 将1号 业务：[SIGN] 分配给1号窗
+[7/8/2026 12:26:30 AM] [CallFinished] 窗口：1窗 呼叫下一号
+[7/8/2026 12:26:30 AM] [Allocator] 分配器: 窗口空闲情况：1 
+[7/8/2026 12:26:30 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:26:30 AM] [Allocator] 将2号 业务：[SIGN] 分配给1号窗
+[7/8/2026 12:26:36 AM] [CallFinished] 窗口：1窗 呼叫下一号
+[7/8/2026 12:26:36 AM] [Allocator] 分配器: 窗口空闲情况：1 
+[7/8/2026 12:26:36 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:26:36 AM] [Allocator] 将3号 业务：[SIGN] 分配给1号窗
+[7/8/2026 12:26:40 AM] [CallFinished] 窗口：1窗 呼叫下一号
+[7/8/2026 12:26:40 AM] [Allocator] 分配器: 窗口空闲情况：1 
+[7/8/2026 12:26:40 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:26:40 AM] [Allocator] 将4号 业务：[SIGN] 分配给1号窗
+[7/8/2026 12:26:55 AM] [ChangeType] 窗口2 业务类型变更: [SIGN]
+[7/8/2026 12:26:58 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:00 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:01 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:06 AM] [CallStart] 窗口继续：2窗
+[7/8/2026 12:27:06 AM] [Allocator] 分配器: 窗口空闲情况：2 
+[7/8/2026 12:27:06 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:27:06 AM] [Allocator] 将5号 业务：[SIGN] 分配给2号窗
+[7/8/2026 12:27:26 AM] [CallStop] 窗口暂停：2窗
+[7/8/2026 12:27:28 AM] [CallStart] 窗口继续：2窗
+[7/8/2026 12:27:28 AM] [Allocator] 分配器: 窗口空闲情况：2 
+[7/8/2026 12:27:28 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:27:28 AM] [Allocator] 将6号 业务：[SIGN] 分配给2号窗
+[7/8/2026 12:27:34 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:34 AM] [Allocator] 分配器: 窗口空闲情况：2 
+[7/8/2026 12:27:34 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:27:34 AM] [Allocator] 将7号 业务：[SIGN] 分配给2号窗
+[7/8/2026 12:27:35 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:35 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:36 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:36 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:36 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:27:37 AM] [CallStop] 窗口暂停：2窗
+[7/8/2026 12:27:38 AM] [CallStart] 窗口继续：2窗
+[7/8/2026 12:28:07 AM] [GenNewUuid] 新取号：8号 业务类型：[SIGN] - 校验码：1783441687693
+[7/8/2026 12:28:07 AM] [Allocator] 分配器: 窗口空闲情况：2 
+[7/8/2026 12:28:07 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:28:07 AM] [Allocator] 将8号 业务：[SIGN] 分配给2号窗
+[7/8/2026 12:28:08 AM] [GenNewUuid] 新取号：9号 业务类型：[SIGN] - 校验码：1783441688909
+[7/8/2026 12:28:09 AM] [GenNewUuid] 新取号：10号 业务类型：[SIGN] - 校验码：1783441689669
+[7/8/2026 12:28:19 AM] [GenHighLevel] 新高优先级取号：1001号 - 固定窗口分配：1 操作人：2 说明：转窗
+[7/8/2026 12:28:23 AM] [CallFinished] 窗口：1窗 呼叫下一号
+[7/8/2026 12:28:23 AM] [AllocatorHighLevel] 高优先级分配：号码1001 分配至固定窗口1
+[7/8/2026 12:28:34 AM] [HandleAsync] WebSocket客户端已连接：35f253d5-f52d-4a90-80be-84c3330603cb
+[7/8/2026 12:29:49 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:29:49 AM] [HandleAsync] WebSocket客户端已断开：35f253d5-f52d-4a90-80be-84c3330603cb
+[7/8/2026 12:29:49 AM] [HandleAsync] WebSocket客户端已连接：7c797aee-8b24-4c3e-8bbf-80ee3f14b51d
+[7/8/2026 12:29:54 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:29:54 AM] [HandleAsync] WebSocket客户端已断开：7c797aee-8b24-4c3e-8bbf-80ee3f14b51d
+[7/8/2026 12:29:54 AM] [HandleAsync] WebSocket客户端已连接：e8657d31-1957-4f65-bc03-846f8a963942
+[7/8/2026 12:29:59 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:29:59 AM] [HandleAsync] WebSocket客户端已断开：e8657d31-1957-4f65-bc03-846f8a963942
+[7/8/2026 12:29:59 AM] [HandleAsync] WebSocket客户端已连接：f25f3ad2-e719-411f-8c5d-d9c829e23cec
+[7/8/2026 12:30:06 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:30:06 AM] [HandleAsync] WebSocket客户端已断开：f25f3ad2-e719-411f-8c5d-d9c829e23cec
+[7/8/2026 12:30:06 AM] [HandleAsync] WebSocket客户端已连接：b4660487-a8a0-4aa3-9d32-17c684b4e530
+[7/8/2026 12:30:09 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:30:09 AM] [HandleAsync] WebSocket客户端已断开：b4660487-a8a0-4aa3-9d32-17c684b4e530
+[7/8/2026 12:30:09 AM] [HandleAsync] WebSocket客户端已连接：d3d40045-dbae-473d-a982-057e46063b6d
+[7/8/2026 12:30:45 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:30:45 AM] [HandleAsync] WebSocket客户端已断开：d3d40045-dbae-473d-a982-057e46063b6d
+[7/8/2026 12:34:12 AM] [ReportEx] 当前业务办理时速: 9p / 10 min
+[7/8/2026 12:35:17 AM] [HandleAsync] WebSocket客户端已连接：9aab106b-0b0e-4fcc-aef0-04927d249e7e
+[7/8/2026 12:35:22 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:35:22 AM] [HandleAsync] WebSocket客户端已断开：9aab106b-0b0e-4fcc-aef0-04927d249e7e
+[7/8/2026 12:35:32 AM] [HandleAsync] WebSocket客户端已连接：3e137010-270a-48f8-bd00-c2c05e077412
+[7/8/2026 12:35:34 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:35:34 AM] [HandleAsync] WebSocket客户端已断开：3e137010-270a-48f8-bd00-c2c05e077412
+[7/8/2026 12:35:47 AM] [HandleAsync] WebSocket客户端已连接：5e32d39b-c013-4855-b16b-5ee60841ffc7
+[7/8/2026 12:36:42 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:36:42 AM] [HandleAsync] WebSocket客户端已断开：5e32d39b-c013-4855-b16b-5ee60841ffc7
+[7/8/2026 12:37:17 AM] [HandleAsync] WebSocket客户端已连接：c77f943c-f1bc-4ae9-8f7a-3b9fc6ee58d5
+[7/8/2026 12:37:27 AM] [GenNewUuid] 新取号：11号 业务类型：[SIGN] - 校验码：1783442247172
+[7/8/2026 12:37:31 AM] [GenNewUuid] 新取号：12号 业务类型：[SIGN] - 校验码：1783442251207
+[7/8/2026 12:37:46 AM] [GenNewUuid] 新取号：13号 业务类型：[SIGN] - 校验码：1783442266540
+[7/8/2026 12:38:12 AM] [HandleAsync] WebSocket连接异常：The remote party closed the WebSocket connection without completing the close handshake.
+[7/8/2026 12:38:12 AM] [HandleAsync] WebSocket客户端已断开：c77f943c-f1bc-4ae9-8f7a-3b9fc6ee58d5
+[7/8/2026 12:38:30 AM] [HandleAsync] WebSocket客户端已连接：8c587fd6-6829-43a8-8c7b-587e9598aa1e
+[7/8/2026 12:38:45 AM] [ApplyPersistedState] 状态恢复成功：窗口 5 个，当前号码 13，等待队列 13 条。
+[7/8/2026 12:39:07 AM] [ChangeType] 窗口2 业务类型变更: [SIGN]
+[7/8/2026 12:39:10 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:39:10 AM] [Allocator] 分配器: 窗口空闲情况：2 
+[7/8/2026 12:39:10 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:39:10 AM] [Allocator] 将9号 业务：[SIGN] 分配给2号窗
+[7/8/2026 12:39:15 AM] [CallFinished] 窗口：2窗 呼叫下一号
+[7/8/2026 12:39:15 AM] [Allocator] 分配器: 窗口空闲情况：2 
+[7/8/2026 12:39:15 AM] [Allocator] 随机数：1   范围：1 - 1
+[7/8/2026 12:39:15 AM] [Allocator] 将10号 业务：[SIGN] 分配给2号窗
+[7/8/2026 12:39:23 AM] [ApplyPersistedState] 状态恢复成功：窗口 5 个，当前号码 13，等待队列 13 条。
+[7/8/2026 12:39:23 AM] [AutoSaveState] 管理员已为此服务器配置自动状态保存，每次保存间隔时长为15秒。
+[7/8/2026 12:39:23 AM] [ReportEx] 管理员已为此服务器配置自动时速监测，每一次监测记录时长为10分钟.
+[7/8/2026 12:39:23 AM] [ReportEx] 当前业务办理时速: 2p / 10 min
+[7/8/2026 12:39:23 AM] [AutoSaveLog] 管理员已为此服务器配置自动日志保存，每次保存间隔时长为1分钟.
+[7/8/2026 12:39:23 AM] [Listener] 开始监听取号队列...
+[7/8/2026 12:39:23 AM] [CreateHostBuilder] UseUrls: http://0.0.0.0:888/
+[7/8/2026 12:39:23 AM] [CreateHostBuilder] 叫号后台启动成功。状态文件：E:\Coding\SmsForwardWeixin\CallOrderServer\bin\Release\netcoreapp5.0\order_state.json
+[7/8/2026 12:39:25 AM] [HandleAsync] WebSocket客户端已连接：36f68633-705c-4f97-a853-e12eba13deca

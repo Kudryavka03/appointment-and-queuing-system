@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace OrderServer.Controller;
 
@@ -44,25 +45,17 @@ public class GetStatusController : ControllerBase
     }
 
 
-    [Route("SetIDs/{num}")]
+	[Route("SetIDs/{num}")]
 	public async Task<string> SetIDsIndex(string num)
 	{
-		int oldNum = DataClass.uuid;
 		try
 		{
-			int fixNum = Convert.ToInt32(num);
-			if (fixNum <= DataClass.uuid)
-			{
-				return "修正失败，修正号数要比当前号数大。";
-			}
-			DataClass.FixID(Convert.ToInt32(num));
+			return DataClass.TryFixID(Convert.ToInt32(num));
 		}
 		catch (Exception)
 		{
 			return "修正失败，请检查是否输入了正确的数字。";
 		}
-		Program.Log("修正叫号 " + oldNum + " > " + DataClass.uuid);
-		return "修正成功";
 	}
 
 	[Route("SetStatus/{OperatorID}/{status}")]
@@ -78,14 +71,7 @@ public class GetStatusController : ControllerBase
 	[Route("GetStatus/GenNewUuid/{typeString}")]
 	public async Task<string> GenNewUuid(string typeString)
 	{
-		List<EnumType> e = DataClass.ParserType(typeString);
-		DataClass.tempNums.Add(new OrderNumber(++DataClass.uuid,e, typeString));
-
-        var Timestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds().ToString();
-		Program.uuid2id.Add(Timestamp, DataClass.uuid);
-        Program.id2uuid.Add(DataClass.uuid,Timestamp);
-        Program.Log("新取号：" + DataClass.uuid + "号 " + $"业务类型：{DataClass.ParserTypeToString(typeString)}" + " - 校验码：" + Timestamp);
-        return (DataClass.uuid).ToString();
+		return DataClass.GenNewUuid(typeString).ToString();
 	}
     [Route("GetStatus/GetAllWindows")]
 	public async Task<string> GetAllWindows()
@@ -118,17 +104,11 @@ public class GetStatusController : ControllerBase
     {
 		try
 		{
-			int o = 0;
-			int t = 0;
-			int n = 0;
 			var l = typeString.Split(',');
-			o = Convert.ToInt32(l[0]);
-			t = Convert.ToInt32(l[1]);
+			int o = Convert.ToInt32(l[0]);
+			int t = Convert.ToInt32(l[1]);
 			string d = l[2];
-			n = ++DataClass.highLevelInt;
-			DataClass.AddKasumiHighLevelOrder(new KasumiHighLevelList(o, t, d, (n + DataClass.highLevelFrontInt)));
-			Program.Log("新高优先级取号：" + (DataClass.highLevelInt + DataClass.highLevelFrontInt) + "号 - 固定窗口分配：" + t + " 操作人：" + o + " 说明：" + d);
-			return (n+DataClass.highLevelFrontInt).ToString();
+			return DataClass.GenHighLevel(o, t, d).ToString();
 		}
 		catch(Exception e)
 		{
@@ -142,14 +122,7 @@ public class GetStatusController : ControllerBase
     {
         try
         {
-			var d = DataClass.ReadReport(Convert.ToInt32(typeString));
-            int o = 0;
-            int t = d.Window;
-            int n = 0;
-            n = ++DataClass.highLevelInt;
-            DataClass.AddKasumiHighLevelOrder(new KasumiHighLevelList(o, t, "过号", (n + DataClass.highLevelFrontInt)));
-            Program.Log("新高优先级取号[过号]：" + (DataClass.highLevelInt+DataClass.highLevelFrontInt) + "号 - 固定窗口分配：" + t + " 操作人：" + o + " 说明：" + "过号");
-            return (n + DataClass.highLevelFrontInt).ToString();
+            return DataClass.GenHighLevelPass(Convert.ToInt32(typeString)).ToString();
         }
         catch (Exception e)
         {
@@ -164,15 +137,8 @@ public class GetStatusController : ControllerBase
     public async Task<string> OldGenNewUuid()
     {
 		string typeString = "10";
-        List<EnumType> e = DataClass.ParserType(typeString);
-        DataClass.tempNums.Add(new OrderNumber(++DataClass.uuid, e, typeString));
-
-        var Timestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeMilliseconds().ToString();
-        Program.uuid2id.Add(Timestamp, DataClass.uuid);
-        Program.id2uuid.Add(DataClass.uuid, Timestamp);
 		Program.Log("注意：当前正在使用旧版取号台接口进行取号，目前该接口已废弃，请尽快使用新接口进行取号。");
-        Program.Log("新取号：" + DataClass.uuid + "号 " + $"业务类型：{DataClass.ParserTypeToString(typeString)}" + " - 校验码：" + Timestamp );
-        return (DataClass.uuid).ToString();
+        return DataClass.GenNewUuid(typeString).ToString();
     }
 
 
@@ -200,12 +166,15 @@ public class GetStatusController : ControllerBase
     [Route("GetStatus/GetCurrentId/{id}")]
     public async Task<string> getid(string id)
     {
-		var result = Program.history[Convert.ToInt32(id)];
+        int number = Convert.ToInt32(id);
+		var result = Program.history[number];
         if (result != null)
 		{
 			return $"请你现在立马到{result}号窗口办理业务。\n你的号码：{id}";
 		}
-		return $"当前正在办理的号码为：{Program.currentId}，还有{Convert.ToInt32(id)-(Convert.ToInt32(Program.currentId))}人在等待。";	// 配合前端逻辑。
+        int current = 0;
+        int.TryParse(Program.currentId, out current);
+		return $"当前正在办理的号码为：{Program.currentId}，还有{Math.Max(0, number-current)}人在等待。";
     }
 
     [Route("CallAction/{a}/{b}")]
@@ -232,7 +201,7 @@ public class GetStatusController : ControllerBase
     }
 
     [Route("GetStatus/GetLog")]
-    public async Task<string> GetLog(string id)
+    public async Task<string> GetLog()
     {
 		var logs = Program.logs;
 		var result = "";
@@ -250,6 +219,32 @@ public class GetStatusController : ControllerBase
 		DataClass.ChangeType(Convert.ToInt32(Window), Type);
 		return "Kasumi：Yeah!!!!!";
 	}
+
+    [Route("SetStatus/SetWindowCount/{Count}")]
+    public async Task<string> SetWindowCount(string Count)
+    {
+        DataClass.ResizeWindows(Convert.ToInt32(Count));
+        return "窗口数量已设置为 " + DataClass.totalWindowNum;
+    }
+
+    [Route("GetStatus/SaveState")]
+    public async Task<string> SaveState()
+    {
+        OrderStateStore.SaveNow();
+        return "状态已保存";
+    }
+
+    [Route("GetStatus/LoadState")]
+    public async Task<string> LoadState()
+    {
+        return DataClass.LoadStateOrDefault(DataClass.totalWindowNum) ? "已加载上一次归档状态" : "未找到可加载的历史状态";
+    }
+
+    [Route("GetStatus/Snapshot")]
+    public async Task<string> Snapshot()
+    {
+        return JsonSerializer.Serialize(DataClass.CreateRealtimeSnapshot());
+    }
 
     [Route("GetWindowType/{id}")]
 	public async Task<string> GetWindowType(string id)

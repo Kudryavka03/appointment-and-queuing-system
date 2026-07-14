@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO;
 
 namespace OrderServer;
 
@@ -23,6 +25,9 @@ public class Startup
 
 	public void ConfigureServices(IServiceCollection services)
 	{
+        services.AddDataProtection()
+            .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "DataProtection-Keys")));
+
 		services.AddMvc(delegate(MvcOptions options)
 		{
 			options.EnableEndpointRouting = false;
@@ -48,6 +53,16 @@ public class Startup
 	{
         app.UseCors();
         app.UseDeveloperExceptionPage();
+        app.UseWebSockets();
+        app.Use(async (context, next) =>
+        {
+            if (context.Request.Path == "/ws")
+            {
+                await OrderWebSocketHub.HandleAsync(context);
+                return;
+            }
+            await next();
+        });
 		DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
 		defaultFilesOptions.DefaultFileNames.Clear();
 		defaultFilesOptions.DefaultFileNames.Add("index.html");

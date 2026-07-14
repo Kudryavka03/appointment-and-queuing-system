@@ -671,7 +671,7 @@
             checkBox6.AutoSize = true;
             checkBox6.Checked = true;
             checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBox6.Location = new System.Drawing.Point(389, 59);
+            checkBox6.Location = new System.Drawing.Point(13, 153);
             checkBox6.Name = "checkBox6";
             checkBox6.Size = new System.Drawing.Size(207, 24);
             checkBox6.TabIndex = 4;

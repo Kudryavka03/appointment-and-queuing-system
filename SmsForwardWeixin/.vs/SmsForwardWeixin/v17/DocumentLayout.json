@@ -3,36 +3,51 @@
   "WorkspaceRootPath": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\callorder\\callorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\callorder\\callorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\commandprocessor\\commandprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\commandprocessor\\commandprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\controllers\\action.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\controllers\\action.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\crud\\dboperator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\crud\\dboperator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\bandoristation\\garupastation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\bandoristation\\garupastation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\utils\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\utils\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\smsforwardweixin.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\smsforwardweixin.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\bandoristation\\cutoffutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\bandoristation\\cutoffutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\bandoristation\\uploadrequestlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\bandoristation\\uploadrequestlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\crud\\dboperator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\crud\\dboperator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\callorder\\callorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\callorder\\callorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\utils\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\utils\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|e:\\coding\\smsforwardweixin\\smsforwardweixin\\smsforwardweixin\\commandprocessor\\commandprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E64FEB46-34CF-4771-B2A8-390E8E63978F}|SmsForwardWeixin\\SmsForwardWeixin.csproj|solutionrelative:smsforwardweixin\\commandprocessor\\commandprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,37 +57,92 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "action.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\Controllers\\action.cs",
               "RelativeDocumentMoniker": "SmsForwardWeixin\\Controllers\\action.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\Controllers\\action.cs",
               "RelativeToolTip": "SmsForwardWeixin\\Controllers\\action.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAABIAAAA",
+              "ViewState": "AQIAALcAAAAAAAAAAAAHwM8AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T06:27:23.135Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Microsoft.NET.EolTargetFrameworks.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAtwB8AAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-12-27T13:25:39.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CutOffUtils.cs",
+              "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\BandoriStation\\CutOffUtils.cs",
+              "RelativeDocumentMoniker": "SmsForwardWeixin\\BandoriStation\\CutOffUtils.cs",
+              "ToolTip": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\BandoriStation\\CutOffUtils.cs",
+              "RelativeToolTip": "SmsForwardWeixin\\BandoriStation\\CutOffUtils.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADgAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T06:30:21.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UploadRequestListener.cs",
+              "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\BandoriStation\\UploadRequestListener.cs",
+              "RelativeDocumentMoniker": "SmsForwardWeixin\\BandoriStation\\UploadRequestListener.cs",
+              "ToolTip": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\BandoriStation\\UploadRequestListener.cs",
+              "RelativeToolTip": "SmsForwardWeixin\\BandoriStation\\UploadRequestListener.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T15:24:34.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GarupaStation.cs",
+              "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\BandoriStation\\GarupaStation.cs",
+              "RelativeDocumentMoniker": "SmsForwardWeixin\\BandoriStation\\GarupaStation.cs",
+              "ToolTip": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\BandoriStation\\GarupaStation.cs",
+              "RelativeToolTip": "SmsForwardWeixin\\BandoriStation\\GarupaStation.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwv0kAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T05:57:12.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\Program.cs",
               "RelativeDocumentMoniker": "SmsForwardWeixin\\Program.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\Program.cs",
               "RelativeToolTip": "SmsForwardWeixin\\Program.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAiwC4AAAAzAAAA",
+              "ViewState": "AQIAAPEAAAAAAAAAAIAwwAwBAABPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T06:25:27.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T06:25:27.526Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "DBOperator.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\CRUD\\DBOperator.cs",
               "RelativeDocumentMoniker": "SmsForwardWeixin\\CRUD\\DBOperator.cs",
@@ -84,32 +154,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "Utils.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\Utils\\Utils.cs",
               "RelativeDocumentMoniker": "SmsForwardWeixin\\Utils\\Utils.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\Utils\\Utils.cs",
               "RelativeToolTip": "SmsForwardWeixin\\Utils\\Utils.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAkwDMAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAewCQAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-05T01:04:24.561Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "CallOrder.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\CallOrder\\CallOrder.cs",
               "RelativeDocumentMoniker": "SmsForwardWeixin\\CallOrder\\CallOrder.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\CallOrder\\CallOrder.cs",
               "RelativeToolTip": "SmsForwardWeixin\\CallOrder\\CallOrder.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAIwDkAAAANAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAkwBAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T11:10:42.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-03T11:10:42.352Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "CommandProcessor.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\CommandProcessor\\CommandProcessor.cs",
               "RelativeDocumentMoniker": "SmsForwardWeixin\\CommandProcessor\\CommandProcessor.cs",
@@ -121,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "SmsForwardWeixin",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin.csproj",
               "RelativeDocumentMoniker": "SmsForwardWeixin\\SmsForwardWeixin.csproj",
@@ -132,13 +201,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Startup.cs",
               "DocumentMoniker": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\Startup.cs",
               "RelativeDocumentMoniker": "SmsForwardWeixin\\Startup.cs",
               "ToolTip": "E:\\Coding\\SmsForwardWeixin\\SmsForwardWeixin\\SmsForwardWeixin\\Startup.cs",
               "RelativeToolTip": "SmsForwardWeixin\\Startup.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAkwBwAAAAAAAAA",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAYwBIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T06:26:09.234Z"
             },

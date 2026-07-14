@@ -81,7 +81,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            BackColor = System.Drawing.Color.DarkBlue;
+            BackColor = System.Drawing.Color.MidnightBlue;
             ClientSize = new System.Drawing.Size(1097, 574);
             Controls.Add(button1);
             Controls.Add(Window1Label);
